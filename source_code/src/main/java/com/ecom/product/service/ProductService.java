@@ -140,7 +140,7 @@ public class ProductService {
     public boolean unlinkProductFromDiscountById(@NotNull Long idDiscount){
         List<Product> productList = this.findAllByDiscount(idDiscount);
         for (Product product : productList){
-            product.setDiscount(null);
+            product.setProductDiscount(null);
             this.update(product);
         }
         return true;

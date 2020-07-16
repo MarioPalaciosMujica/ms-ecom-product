@@ -1,7 +1,7 @@
 package com.ecom.product.service;
 
-import com.ecom.product.dalc.entities.Tax;
-import com.ecom.product.dalc.repositories.ITaxRepository;
+import com.ecom.product.dalc.entities.ProductTax;
+import com.ecom.product.dalc.repositories.IProductTaxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,9 @@ import java.util.Optional;
 @Service
 public class TaxService {
 
-    @Autowired private ITaxRepository taxRepository;
+    @Autowired private IProductTaxRepository taxRepository;
 
-    public Tax save(@NotNull Tax entity){
+    public ProductTax save(@NotNull ProductTax entity){
         entity.setIdTax(null);
         entity.setCreated(new Date());
         entity.setModified(null);
@@ -23,8 +23,8 @@ public class TaxService {
         return entity;
     }
 
-    public Tax findById(@NotNull Long id){
-        Optional<Tax> entity = taxRepository.findById(id);
+    public ProductTax findById(@NotNull Long id){
+        Optional<ProductTax> entity = taxRepository.findById(id);
         if(entity.isPresent()){
             return entity.get();
         }
@@ -33,11 +33,11 @@ public class TaxService {
         }
     }
 
-    public List<Tax> findAll(){
+    public List<ProductTax> findAll(){
         return taxRepository.findAll();
     }
 
-    public boolean update(@NotNull Tax entity){
+    public boolean update(@NotNull ProductTax entity){
         entity.setModified(new Date());
         taxRepository.save(entity);
         return true;

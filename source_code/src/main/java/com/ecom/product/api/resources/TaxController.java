@@ -1,7 +1,7 @@
 package com.ecom.product.api.resources;
 
-import com.ecom.product.api.mapping.TaxMap;
-import com.ecom.product.api.models.TaxModel;
+import com.ecom.product.api.mapping.ProductTaxMap;
+import com.ecom.product.api.models.ProductTaxModel;
 import com.ecom.product.service.TaxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,30 +10,30 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Tax")
+@RequestMapping("/ProductTax")
 public class TaxController {
 
     @Autowired private TaxService taxService;
-    @Autowired private TaxMap taxMap;
+    @Autowired private ProductTaxMap productTaxMap;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void save(@RequestBody @NotNull TaxModel model){
-        taxService.save(taxMap.toEntity(model));
+    public void save(@RequestBody @NotNull ProductTaxModel model){
+        taxService.save(productTaxMap.toEntity(model));
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public List<TaxModel> findAll(){
-        return taxMap.toModelList(taxService.findAll());
+    public List<ProductTaxModel> findAll(){
+        return productTaxMap.toModelList(taxService.findAll());
     }
 
     @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
-    public TaxModel findById(@PathVariable @NotNull Long id){
-        return taxMap.toModel(taxService.findById(id));
+    public ProductTaxModel findById(@PathVariable @NotNull Long id){
+        return productTaxMap.toModel(taxService.findById(id));
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PATCH)
-    public void update(@RequestBody @NotNull TaxModel model){
-        taxService.update(taxMap.toEntity(model));
+    public void update(@RequestBody @NotNull ProductTaxModel model){
+        taxService.update(productTaxMap.toEntity(model));
     }
 
     @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)

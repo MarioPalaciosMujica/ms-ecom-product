@@ -58,7 +58,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_discount")
-    private Discount discount;
+    private ProductDiscount productDiscount;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -91,9 +91,9 @@ public class Product {
     @JoinTable(
             name = "tbr_products_taxes",
             joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_tax")
+            inverseJoinColumns = @JoinColumn(name = "id_product_tax")
     )
-    private Set<Tag> taxes;
+    private Set<ProductTax> productTaxes;
 
 
     // GETTERS AND SETTERS
@@ -194,12 +194,12 @@ public class Product {
         this.brand = brand;
     }
 
-    public Discount getDiscount() {
-        return discount;
+    public ProductDiscount getProductDiscount() {
+        return productDiscount;
     }
 
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
+    public void setProductDiscount(ProductDiscount productDiscount) {
+        this.productDiscount = productDiscount;
     }
 
     public Set<Image> getImages() {
@@ -234,11 +234,11 @@ public class Product {
         this.tags = tags;
     }
 
-    public Set<Tag> getTaxes() {
-        return taxes;
+    public Set<ProductTax> getProductTaxes() {
+        return productTaxes;
     }
 
-    public void setTaxes(Set<Tag> taxes) {
-        this.taxes = taxes;
+    public void setProductTaxes(Set<ProductTax> productTaxes) {
+        this.productTaxes = productTaxes;
     }
 }

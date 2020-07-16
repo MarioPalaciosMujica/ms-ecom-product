@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tbl_discounts")
 @NoArgsConstructor
-public class Discount {
+public class ProductDiscount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +29,8 @@ public class Discount {
     @Column(name = "percentage")
     private BigDecimal percentage;
 
-    @Column(name = "fixed_price")
-    private BigDecimal fixedPrice;
+    @Column(name = "fixed_amount")
+    private BigDecimal fixedAmount;
 
     @Column(name = "valid_until", nullable = false)
     private Date validUntil;
@@ -82,12 +82,12 @@ public class Discount {
         this.percentage = percentage;
     }
 
-    public BigDecimal getFixedPrice() {
-        return fixedPrice;
+    public BigDecimal getFixedAmount() {
+        return fixedAmount;
     }
 
-    public void setFixedPrice(BigDecimal fixedPrice) {
-        this.fixedPrice = fixedPrice;
+    public void setFixedAmount(BigDecimal fixedAmount) {
+        this.fixedAmount = fixedAmount;
     }
 
     public Date getValidUntil() {

@@ -23,9 +23,9 @@ public class ProductModel {
     private Date modified;
     private ImageModel image;
     private BrandModel brand;
-    private DiscountModel discount;
+    private ProductDiscountModel productDiscount;
     private List<ImageModel> images;
     private List<CategoryModel> categories;
     private List<TagModel> tags;
-    private List<TagModel> taxes;
+    private List<ProductTaxModel> productTaxes;
 }

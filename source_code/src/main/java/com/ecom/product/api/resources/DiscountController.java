@@ -1,7 +1,7 @@
 package com.ecom.product.api.resources;
 
-import com.ecom.product.api.mapping.DiscountMap;
-import com.ecom.product.api.models.DiscountModel;
+import com.ecom.product.api.mapping.ProductDiscountMap;
+import com.ecom.product.api.models.ProductDiscountModel;
 import com.ecom.product.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,30 +10,30 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Discount")
+@RequestMapping("/ProductDiscount")
 public class DiscountController {
 
     @Autowired private DiscountService discountService;
-    @Autowired private DiscountMap discountMap;
+    @Autowired private ProductDiscountMap productDiscountMap;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void save(@RequestBody @NotNull DiscountModel model){
-        discountService.save(discountMap.toEntity(model));
+    public void save(@RequestBody @NotNull ProductDiscountModel model){
+        discountService.save(productDiscountMap.toEntity(model));
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public List<DiscountModel> findAll(){
-        return discountMap.toModelList(discountService.findAll());
+    public List<ProductDiscountModel> findAll(){
+        return productDiscountMap.toModelList(discountService.findAll());
     }
 
     @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
-    public DiscountModel findById(@PathVariable @NotNull Long id){
-        return discountMap.toModel(discountService.findById(id));
+    public ProductDiscountModel findById(@PathVariable @NotNull Long id){
+        return productDiscountMap.toModel(discountService.findById(id));
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PATCH)
-    public void update(@RequestBody @NotNull DiscountModel model){
-        discountService.update(discountMap.toEntity(model));
+    public void update(@RequestBody @NotNull ProductDiscountModel model){
+        discountService.update(productDiscountMap.toEntity(model));
     }
 
     @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)

@@ -1,7 +1,7 @@
 package com.ecom.product.service;
 
-import com.ecom.product.dalc.entities.Discount;
-import com.ecom.product.dalc.repositories.IDiscountRepository;
+import com.ecom.product.dalc.entities.ProductDiscount;
+import com.ecom.product.dalc.repositories.IProductDiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +13,10 @@ import java.util.Optional;
 @Service
 public class DiscountService {
 
-    @Autowired private IDiscountRepository discountRepository;
+    @Autowired private IProductDiscountRepository discountRepository;
     @Autowired private ProductService productService;
 
-    public Discount save(@NotNull Discount entity){
+    public ProductDiscount save(@NotNull ProductDiscount entity){
         entity.setIdDiscount(null);
         entity.setCreated(new Date());
         entity.setModified(null);
@@ -24,8 +24,8 @@ public class DiscountService {
         return entity;
     }
 
-    public Discount findById(@NotNull Long id){
-        Optional<Discount> entity = discountRepository.findById(id);
+    public ProductDiscount findById(@NotNull Long id){
+        Optional<ProductDiscount> entity = discountRepository.findById(id);
         if(entity.isPresent()){
             return entity.get();
         }
@@ -34,12 +34,12 @@ public class DiscountService {
         }
     }
 
-    public List<Discount> findAll(){
+    public List<ProductDiscount> findAll(){
         return discountRepository.findAll();
     }
 
-    public boolean update(@NotNull Discount entity){
-        Discount original = this.findById(entity.getIdDiscount());
+    public boolean update(@NotNull ProductDiscount entity){
+        ProductDiscount original = this.findById(entity.getIdDiscount());
         if(original != null){
             entity.setCreated(original.getCreated());
             entity.setModified(new Date());

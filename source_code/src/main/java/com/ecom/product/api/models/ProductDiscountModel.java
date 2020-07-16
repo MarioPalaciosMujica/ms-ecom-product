@@ -8,13 +8,13 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class DiscountModel {
+public class ProductDiscountModel {
 
     private Long idDiscount;
     private String name;
     private String description;
     private BigDecimal percentage;
-    private BigDecimal fixedPrice;
+    private BigDecimal fixedAmount;
     private Date validUntil;
     private boolean isActive;
     private Date created;

@@ -15,9 +15,9 @@ public class ProductMap {
     @Autowired private ImageMap imageMap;
     @Autowired private CategoryMap categoryMap;
     @Autowired private BrandMap brandMap;
-    @Autowired private DiscountMap discountMap;
+    @Autowired private ProductDiscountMap productDiscountMap;
     @Autowired private TagMap tagMap;
-    @Autowired private TaxMap taxMap;
+    @Autowired private ProductTaxMap productTaxMap;
 
     public ProductModel toModel(Product entity){
         if(entity != null){
@@ -32,9 +32,10 @@ public class ProductMap {
             model.setModified(entity.getModified());
             model.setImage(this.imageMap.toModel(entity.getImage()));
             model.setBrand(this.brandMap.toModel(entity.getBrand()));
-            model.setDiscount(this.discountMap.toModel(entity.getDiscount()));
+            model.setProductDiscount(this.productDiscountMap.toModel(entity.getProductDiscount()));
             model.setCategories(this.categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
             model.setTags(this.tagMap.toModelList(new ArrayList<>(entity.getTags())));
+            model.setProductTaxes(this.productTaxMap.toModelList(new ArrayList<>(entity.getProductTaxes())));
             return model;
         }
         else{
@@ -55,9 +56,10 @@ public class ProductMap {
             entity.setModified(model.getModified());
             entity.setImage(this.imageMap.toEntity(model.getImage()));
             entity.setBrand(this.brandMap.toEntity(model.getBrand()));
-            entity.setDiscount(this.discountMap.toEntity(model.getDiscount()));
+            entity.setProductDiscount(this.productDiscountMap.toEntity(model.getProductDiscount()));
             entity.setCategories(new HashSet<>(this.categoryMap.toEntityList(model.getCategories())));
             entity.setTags(new HashSet<>(this.tagMap.toEntityList(model.getTags())));
+            entity.setProductTaxes(new HashSet<>(this.productTaxMap.toEntityList(model.getProductTaxes())));
             return entity;
         }
         else{

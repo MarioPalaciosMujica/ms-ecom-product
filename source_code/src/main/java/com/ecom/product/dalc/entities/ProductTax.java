@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "tbl_taxes")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tax {
+public class ProductTax {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,8 @@ public class Tax {
     @Column(name = "percentage")
     private BigDecimal percentage;
 
-    @Column(name = "fixed_price")
-    private BigDecimal fixedPrice;
+    @Column(name = "fixed_amount")
+    private BigDecimal fixedAmount;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -46,7 +46,7 @@ public class Tax {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "tbr_products_taxes",
-            joinColumns = @JoinColumn(name = "id_tax"),
+            joinColumns = @JoinColumn(name = "id_product_tax"),
             inverseJoinColumns = @JoinColumn(name = "id_product")
     )
     private Set<Product> producs;
@@ -86,12 +86,12 @@ public class Tax {
         this.percentage = percentage;
     }
 
-    public BigDecimal getFixedPrice() {
-        return fixedPrice;
+    public BigDecimal getFixedAmount() {
+        return fixedAmount;
     }
 
-    public void setFixedPrice(BigDecimal fixedPrice) {
-        this.fixedPrice = fixedPrice;
+    public void setFixedAmount(BigDecimal fixedAmount) {
+        this.fixedAmount = fixedAmount;
     }
 
     public boolean isActive() {

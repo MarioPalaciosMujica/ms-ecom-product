@@ -108,7 +108,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/updateRanking/{id}", method = RequestMethod.PATCH)
-    public void addRanking(@PathVariable @NotNull Long id){
+    public void updateRanking(@PathVariable @NotNull Long id){
         productService.updateRanking(id);
     }
 }
