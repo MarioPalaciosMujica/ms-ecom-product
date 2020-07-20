@@ -149,8 +149,8 @@ public class ProductService {
         return productRepository.findAllActivesByCategory(idCategory);
     }
 
-    public List<Product> findAllByNameLike(@NotNull String partialName){
-        return productRepository.findByNameContainingIgnoreCase(partialName);
+    public List<Product> findAllByTitleLike(@NotNull String partialName){
+        return productRepository.findByTitleContainingIgnoreCase(partialName);
     }
 
     public List<Product> findAllByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){

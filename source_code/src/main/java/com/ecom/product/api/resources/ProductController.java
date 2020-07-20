@@ -142,9 +142,9 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesByBrand(idBrand));
     }
 
-    @RequestMapping(value = "/findAllByNameLike/{partialName}", method = RequestMethod.GET)
-    public List<ProductModel> findAllByNameLike(@PathVariable @NotNull String partialName){
-        return productMap.toModelList(productService.findAllByNameLike(partialName));
+    @RequestMapping(value = "/findAllByTitleLike/{partialName}", method = RequestMethod.GET)
+    public List<ProductModel> findAllByTitleLike(@PathVariable @NotNull String partialName){
+        return productMap.toModelList(productService.findAllByTitleLike(partialName));
     }
 
     @RequestMapping(value = "/findAllByPriceRange/{minPrice}/{maxPrice}", method = RequestMethod.GET)

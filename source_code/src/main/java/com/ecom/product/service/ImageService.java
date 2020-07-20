@@ -73,9 +73,7 @@ public class ImageService {
         Files.write(path, bytes);
 
         Image entity = new Image();
-        entity.setUrlImage(folder + imageFile.getOriginalFilename());
-        entity.setName(imageFile.getOriginalFilename());
-
+        entity.setSrc(folder + imageFile.getOriginalFilename());
         return this.save(entity);
     }
 
@@ -85,8 +83,7 @@ public class ImageService {
 //        String imageName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
 //
 //        Image entity = new Image();
-//        entity.setUrlImage(imageUrl);
-//        entity.setName(imageName);
+//        entity.setSrc(imageUrl);
 //        return this.save(entity);
 //    }
 //

@@ -16,7 +16,7 @@ public class CollectionService {
     @Autowired private ICollectionRepository featuredProductRepository;
 
     public Collection save(@NotNull Collection entity){
-        entity.setIdFeaturedProduct(null);
+        entity.setIdCollection(null);
         entity.setCreated(new Date());
         entity.setModified(null);
         featuredProductRepository.save(entity);
@@ -51,18 +51,5 @@ public class CollectionService {
         else {
             return false;
         }
-    }
-
-    public List<Collection> findAllByFeatureType(@NotNull Long idFeatureType){
-        return featuredProductRepository.findAllByFeatureType(idFeatureType);
-    }
-
-    public boolean unlinkFeaturedProductsFromFeatureTypeById(@NotNull Long idFeatureType){
-        List<Collection> collectionList = this.findAllByFeatureType(idFeatureType);
-        for (Collection collection : collectionList){
-            collection.setFeatureType(null);
-            this.update(collection);
-        }
-        return true;
     }
 }

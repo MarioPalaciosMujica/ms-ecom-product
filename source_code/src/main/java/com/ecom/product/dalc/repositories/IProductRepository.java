@@ -45,10 +45,10 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p where p.isSale = false and p.isActive = true")
     List<Product> findAllActivesNotOnSale();
 
-    @Query("select p from Product p where p.idCollection = :idCollection")
+    @Query("select p from Product p where p.collection.idCollection = :idCollection")
     List<Product> findAllByCollection(@Param("idCollection") Long idCollection);
 
-    @Query("select p from Product p where p.idCollection = :idCollection and p.isActive = true")
+    @Query("select p from Product p where p.collection.idCollection = :idCollection and p.isActive = true")
     List<Product> findAllActivesByCollection(@Param("idCollection") Long idCollection);
 
     @Query("select p from Product p where p.stock >= 1 and p.stock is null")
@@ -72,7 +72,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p join p.categories c where c.idCategory = :idCategory and p.isActive = true")
     List<Product> findAllActivesByCategory(@Param("idCategory") Long idCategory);
 
-    List<Product> findByNameContainingIgnoreCase(@Param("partialName") String partialName);
+    List<Product> findByTitleContainingIgnoreCase(@Param("partialName") String partialName);
 
     //TODO: find actives by partial name
 

@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface ICollectionRepository extends JpaRepository<Collection, Long> {
-
-    @Query("select f from Collection f where f.featureType.idFeatureType = :idFeatureType")
-    List<Collection> findAllByFeatureType(@Param("idFeatureType") Long idFeatureType);
 }
