@@ -8,14 +8,14 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "tbl_brands")
+@Table(name = "tbl_collections")
 @NoArgsConstructor
-public class Brand {
+public class Collection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_brand", updatable = false, nullable = false, unique = true)
-    private Long idBrand;
+    @Column(name = "id_collection", updatable = false, nullable = false, unique = true)
+    private Long idCollection;
 
     @Column(name = "name", nullable = false, unique = true)
     @Size(min = 2, max = 50, message = "name size invalid")
@@ -27,20 +27,16 @@ public class Brand {
     @Column(name = "modified")
     private Date modified;
 
-    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "collection")
     private Set<Product> products;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_image")
-    private Image image;
 
-
-    public Long getIdBrand() {
-        return idBrand;
+    public Long getIdCollection() {
+        return idCollection;
     }
 
-    public void setIdBrand(Long idBrand) {
-        this.idBrand = idBrand;
+    public void setIdCollection(Long idCollection) {
+        this.idCollection = idCollection;
     }
 
     public String getName() {
@@ -73,13 +69,5 @@ public class Brand {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 }

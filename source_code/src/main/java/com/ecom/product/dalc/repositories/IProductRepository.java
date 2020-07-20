@@ -21,11 +21,44 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p join p.brand b where b.idBrand = :idBrand and p.isActive = true")
     List<Product> findAllActivesByBrand(@Param("idBrand") Long idBrand);
 
-    @Query("select p from Product p join p.discount d where d.idDiscount = :idDiscount")
-    List<Product> findAllByDiscount(@Param("idDiscount") Long idDiscount);
+    @Query("select p from Product p where p.isNew = true")
+    List<Product> findAllNew();
 
-    @Query("select p from Product p join p.discount d where d.idDiscount = :idDiscount and p.isActive = true")
-    List<Product> findAllActivesByDiscount(@Param("idDiscount") Long idDiscount);
+    @Query("select p from Product p where p.isNew = true and p.isActive = true")
+    List<Product> findAllActivesNew();
+
+    @Query("select p from Product p where p.isNew = false")
+    List<Product> findAllNotNew();
+
+    @Query("select p from Product p where p.isNew = false and p.isActive = true")
+    List<Product> findAllActivesNotNew();
+
+    @Query("select p from Product p where p.isSale = true")
+    List<Product> findAllOnSale();
+
+    @Query("select p from Product p where p.isSale = true and p.isActive = true")
+    List<Product> findAllActivesOnSale();
+
+    @Query("select p from Product p where p.isSale = false")
+    List<Product> findAllNotOnSale();
+
+    @Query("select p from Product p where p.isSale = false and p.isActive = true")
+    List<Product> findAllActivesNotOnSale();
+
+    @Query("select p from Product p where p.idCollection = :idCollection")
+    List<Product> findAllByCollection(@Param("idCollection") Long idCollection);
+
+    @Query("select p from Product p where p.idCollection = :idCollection and p.isActive = true")
+    List<Product> findAllActivesByCollection(@Param("idCollection") Long idCollection);
+
+    @Query("select p from Product p where p.stock >= 1 and p.stock is null")
+    List<Product> findAllInStock();
+
+    @Query("select p from Product p where p.stock >= 1 and p.stock is null and p.isActive = true")
+    List<Product> findAllActivesInStock();
+
+    @Query("select p from Product p where p.stock <= 0 and p.stock is not null")
+    List<Product> findAllNotInStock();
 
     @Query("select p from Product p join p.tags t where t.idTag = :idTag")
     List<Product> findAllByTag(@Param("idTag") Long idTag);

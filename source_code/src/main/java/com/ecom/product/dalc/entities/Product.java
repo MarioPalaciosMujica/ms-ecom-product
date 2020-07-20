@@ -22,13 +22,16 @@ public class Product {
     @Size(max = 13, message = "barcode size invalid")
     private String barcode;
 
-    @Column(name = "name", nullable = false, unique = true)
-    @Size(min = 2, max = 50, message = "name size invalid")
-    private String name;
+    @Column(name = "title", nullable = false, unique = true)
+    @Size(min = 2, max = 50, message = "title size invalid")
+    private String title;
 
     @Column(name = "description")
-    @Size(max = 1000, message = "shortDescription size not valid")
+    @Size(max = 1000, message = "description size not valid")
     private String description;
+
+    @Column(name = "isNew", nullable = false)
+    private boolean isNew;
 
     @Column(name = "rating")
     private int rating;
@@ -36,8 +39,17 @@ public class Product {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "sku")
-    private Long sku;
+    @Column(name = "isSale", nullable = false)
+    private boolean isSale;
+
+    @Column(name = "discount_percentage")
+    private BigDecimal discountPercentage;
+
+    @Column(name = "price_discount")
+    private BigDecimal priceDiscount;
+
+    @Column(name = "stock")
+    private int stock;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -56,10 +68,6 @@ public class Product {
     @JoinColumn(name = "id_brand")
     private Brand brand;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_discount")
-    private ProductDiscount productDiscount;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "tbr_products_images",
@@ -76,8 +84,9 @@ public class Product {
     )
     private Set<Category> categories;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    private Set<FeaturedProduct> featuredProducts;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_collection")
+    private Collection collection;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -87,16 +96,6 @@ public class Product {
     )
     private Set<Tag> tags;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "tbr_products_taxes",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_product_tax")
-    )
-    private Set<ProductTax> productTaxes;
-
-
-    // GETTERS AND SETTERS
 
     public Long getIdProduct() {
         return idProduct;
@@ -114,12 +113,12 @@ public class Product {
         this.barcode = barcode;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -128,6 +127,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean aNew) {
+        isNew = aNew;
     }
 
     public int getRating() {
@@ -146,12 +153,36 @@ public class Product {
         this.price = price;
     }
 
-    public Long getSku() {
-        return sku;
+    public boolean isSale() {
+        return isSale;
     }
 
-    public void setSku(Long sku) {
-        this.sku = sku;
+    public void setSale(boolean sale) {
+        isSale = sale;
+    }
+
+    public BigDecimal getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(BigDecimal discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
+
+    public BigDecimal getPriceDiscount() {
+        return priceDiscount;
+    }
+
+    public void setPriceDiscount(BigDecimal priceDiscount) {
+        this.priceDiscount = priceDiscount;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public boolean isActive() {
@@ -194,14 +225,6 @@ public class Product {
         this.brand = brand;
     }
 
-    public ProductDiscount getProductDiscount() {
-        return productDiscount;
-    }
-
-    public void setProductDiscount(ProductDiscount productDiscount) {
-        this.productDiscount = productDiscount;
-    }
-
     public Set<Image> getImages() {
         return images;
     }
@@ -218,12 +241,12 @@ public class Product {
         this.categories = categories;
     }
 
-    public Set<FeaturedProduct> getFeaturedProducts() {
-        return featuredProducts;
+    public Collection getCollection() {
+        return collection;
     }
 
-    public void setFeaturedProducts(Set<FeaturedProduct> featuredProducts) {
-        this.featuredProducts = featuredProducts;
+    public void setCollection(Collection collection) {
+        this.collection = collection;
     }
 
     public Set<Tag> getTags() {
@@ -232,13 +255,5 @@ public class Product {
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
-    }
-
-    public Set<ProductTax> getProductTaxes() {
-        return productTaxes;
-    }
-
-    public void setProductTaxes(Set<ProductTax> productTaxes) {
-        this.productTaxes = productTaxes;
     }
 }

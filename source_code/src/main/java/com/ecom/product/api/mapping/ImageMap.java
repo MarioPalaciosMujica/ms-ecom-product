@@ -14,9 +14,8 @@ public class ImageMap {
         if(entity != null){
             ImageModel model = new ImageModel();
             model.setIdImage(entity.getIdImage());
-            model.setName(entity.getName());
-            model.setDescription(entity.getDescription());
-            model.setUrlImage(entity.getUrlImage());
+            model.setAlt(entity.getAlt());
+            model.setSrc(entity.getSrc());
             model.setCreated(entity.getCreated());
             model.setModified(entity.getModified());
             return model;
@@ -30,9 +29,8 @@ public class ImageMap {
         if(model != null){
             Image entity = new Image();
             entity.setIdImage(model.getIdImage());
-            entity.setName(model.getName());
-            entity.setDescription(model.getDescription());
-            entity.setUrlImage(model.getUrlImage());
+            entity.setAlt(model.getAlt());
+            entity.setSrc(model.getSrc());
             entity.setCreated(model.getCreated());
             entity.setModified(model.getModified());
             return entity;

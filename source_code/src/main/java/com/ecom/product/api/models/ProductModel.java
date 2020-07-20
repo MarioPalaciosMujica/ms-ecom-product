@@ -18,11 +18,14 @@ public class ProductModel {
     @JsonProperty("barcode")
     private String barcode;
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("title")
+    private String title;
 
     @JsonProperty("description")
     private String description;
+
+    @JsonProperty("isNew")
+    private boolean isNew;
 
     @JsonProperty("rating")
     private int rating;
@@ -30,8 +33,17 @@ public class ProductModel {
     @JsonProperty("price")
     private BigDecimal price;
 
-    @JsonProperty("sku")
-    private Long sku;
+    @JsonProperty("isSale")
+    private boolean isSale;
+
+    @JsonProperty("discountPercentage")
+    private BigDecimal discountPercentage;
+
+    @JsonProperty("priceDiscount")
+    private BigDecimal priceDiscount;
+
+    @JsonProperty("stock")
+    private int stock;
 
     @JsonProperty("isActive")
     private boolean isActive;
@@ -48,8 +60,8 @@ public class ProductModel {
     @JsonProperty("brand")
     private BrandModel brand;
 
-    @JsonProperty("productDiscount")
-    private ProductDiscountModel productDiscount;
+    @JsonProperty("collection")
+    private CollectionModel collection;
 
     @JsonProperty("images")
     private List<ImageModel> images;
@@ -60,6 +72,4 @@ public class ProductModel {
     @JsonProperty("tags")
     private List<TagModel> tags;
 
-    @JsonProperty("productTaxes")
-    private List<ProductTaxModel> productTaxes;
 }

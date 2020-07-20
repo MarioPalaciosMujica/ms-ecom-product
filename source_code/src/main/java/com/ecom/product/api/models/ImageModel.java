@@ -13,14 +13,11 @@ public class ImageModel {
     @JsonProperty("idImage")
     private Long idImage;
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("alt")
+    private String alt;
 
-    @JsonProperty("description")
-    private String description;
-
-    @JsonProperty("urlImage")
-    private String urlImage;
+    @JsonProperty("src")
+    private String src;
 
     @JsonProperty("created")
     private Date created;

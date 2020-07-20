@@ -15,27 +15,35 @@ public class ProductMap {
     @Autowired private ImageMap imageMap;
     @Autowired private CategoryMap categoryMap;
     @Autowired private BrandMap brandMap;
-    @Autowired private ProductDiscountMap productDiscountMap;
     @Autowired private TagMap tagMap;
-    @Autowired private ProductTaxMap productTaxMap;
+    @Autowired private CollectionMap collectionMap;
 
     public ProductModel toModel(Product entity){
         if(entity != null){
             ProductModel model = new ProductModel();
             model.setIdProduct(entity.getIdProduct());
-            model.setName(entity.getName());
+            model.setTitle(entity.getTitle());
             model.setDescription(entity.getDescription());
             model.setRating(entity.getRating());
             model.setPrice(entity.getPrice());
+
+            model.setNew(entity.isNew());
+            model.setSale(entity.isSale());
+            model.setDiscountPercentage(entity.getDiscountPercentage());
+            model.setPriceDiscount(entity.getPriceDiscount());
+            model.setStock(entity.getStock());
+
             model.setActive(entity.isActive());
             model.setCreated(entity.getCreated());
             model.setModified(entity.getModified());
             model.setImage(this.imageMap.toModel(entity.getImage()));
             model.setBrand(this.brandMap.toModel(entity.getBrand()));
-            model.setProductDiscount(this.productDiscountMap.toModel(entity.getProductDiscount()));
+
+            model.setCollection(this.collectionMap.toModel(entity.getCollection()));
+            model.setImages(this.imageMap.toModelList(new ArrayList<>(entity.getImages())));
+
             model.setCategories(this.categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
             model.setTags(this.tagMap.toModelList(new ArrayList<>(entity.getTags())));
-            model.setProductTaxes(this.productTaxMap.toModelList(new ArrayList<>(entity.getProductTaxes())));
             return model;
         }
         else{
@@ -47,19 +55,28 @@ public class ProductMap {
         if(model != null){
             Product entity = new Product();
             entity.setIdProduct(model.getIdProduct());
-            entity.setName(model.getName());
+            entity.setTitle(model.getTitle());
             entity.setDescription(model.getDescription());
             entity.setRating(model.getRating());
             entity.setPrice(model.getPrice());
+
+            entity.setNew(model.isNew());
+            entity.setSale(model.isSale());
+            entity.setDiscountPercentage(model.getDiscountPercentage());
+            entity.setPriceDiscount(model.getPriceDiscount());
+            entity.setStock(model.getStock());
+
             entity.setActive(model.isActive());
             entity.setCreated(model.getCreated());
             entity.setModified(model.getModified());
             entity.setImage(this.imageMap.toEntity(model.getImage()));
             entity.setBrand(this.brandMap.toEntity(model.getBrand()));
-            entity.setProductDiscount(this.productDiscountMap.toEntity(model.getProductDiscount()));
+
+            entity.setCollection(this.collectionMap.toEntity(model.getCollection()));
+            entity.setImages(new HashSet<>(this.imageMap.toEntityList(model.getImages())));
+
             entity.setCategories(new HashSet<>(this.categoryMap.toEntityList(model.getCategories())));
             entity.setTags(new HashSet<>(this.tagMap.toEntityList(model.getTags())));
-            entity.setProductTaxes(new HashSet<>(this.productTaxMap.toEntityList(model.getProductTaxes())));
             return entity;
         }
         else{

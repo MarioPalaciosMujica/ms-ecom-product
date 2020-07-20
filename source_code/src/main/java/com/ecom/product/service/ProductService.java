@@ -1,14 +1,13 @@
 package com.ecom.product.service;
 
-import com.ecom.product.dalc.entities.FeaturedProduct;
 import com.ecom.product.dalc.entities.Product;
 import com.ecom.product.dalc.repositories.IProductRepository;
+import com.ecom.product.tools.CurrencyCLP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,10 +16,14 @@ import java.util.Optional;
 public class ProductService {
 
     @Autowired private IProductRepository productRepository;
-    @Autowired private FeaturedProductService featuredProductService;
+    @Autowired private CollectionService collectionService;
+    @Autowired private CurrencyCLP currencyCLP;
 
     public Product save(@NotNull Product entity){
         entity.setIdProduct(null);
+        entity.setPrice(currencyCLP.roundClp(entity.getPrice()));
+        this.isProductSale(entity);
+        entity.setNew(true);
         entity.setRating(0);
         entity.setCreated(new Date());
         entity.setModified(null);
@@ -46,6 +49,7 @@ public class ProductService {
         if(original != null){
             entity.setCreated(original.getCreated());
             entity.setModified(new Date());
+            this.isProductSale(entity);
             productRepository.save(entity);
             return true;
         }
@@ -85,12 +89,56 @@ public class ProductService {
         return productRepository.findAllActivesByBrand(idTag);
     }
 
-    public List<Product> findAllByDiscount(@NotNull Long idDiscount){
-        return productRepository.findAllByDiscount(idDiscount);
+    public List<Product> findAllNew(){
+        return productRepository.findAllNew();
     }
 
-    public List<Product> findAllActivesByDiscount(@NotNull Long idDiscount){
-        return productRepository.findAllActivesByDiscount(idDiscount);
+    public List<Product> findAllActivesNew(){
+        return productRepository.findAllActivesNew();
+    }
+
+    public List<Product> findAllNotNew(){
+        return productRepository.findAllNotNew();
+    }
+
+    public List<Product> findAllActivesNotNew(){
+        return productRepository.findAllActivesNotNew();
+    }
+
+    public List<Product> findAllOnSale(){
+        return productRepository.findAllOnSale();
+    }
+
+    public List<Product> findAllActivesOnSale(){
+        return productRepository.findAllActivesOnSale();
+    }
+
+    public List<Product> findAllNotOnSale(){
+        return productRepository.findAllNotOnSale();
+    }
+
+    public List<Product> findAllActivesNotOnSale(){
+        return productRepository.findAllActivesNotOnSale();
+    }
+
+    public List<Product> findAllByCollection(@NotNull Long idCollection){
+        return productRepository.findAllByCollection(idCollection);
+    }
+
+    public List<Product> findAllActivesByCollection(@NotNull Long idCollection){
+        return productRepository.findAllActivesByCollection(idCollection);
+    }
+
+    public List<Product> findAllInStock(){
+        return productRepository.findAllInStock();
+    }
+
+    public List<Product> findAllActivesInStock(){
+        return productRepository.findAllActivesInStock();
+    }
+
+    public List<Product> findAllNotInStock(){
+        return productRepository.findAllNotInStock();
     }
 
     public List<Product> findAllByCategory(@NotNull Long idCategory){
@@ -105,42 +153,14 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(partialName);
     }
 
-    public List<Product> findAllByFeatureType(@NotNull Long idFeatureType){
-        List<Product> productList = new ArrayList<>();
-        for (FeaturedProduct featuredProduct : featuredProductService.findAllByFeatureType(idFeatureType)){
-            productList.add(featuredProduct.getProduct());
-        }
-        return productList;
-    }
-
-    public List<Product> findAllActivesByFeatureType(@NotNull Long idFeatureType){
-        List<Product> productList = new ArrayList<>();
-        for (FeaturedProduct featuredProduct : featuredProductService.findAllByFeatureType(idFeatureType)){
-            if(featuredProduct.getProduct().isActive()){
-                productList.add(featuredProduct.getProduct());
-            }
-        }
-        return productList;
-    }
-
     public List<Product> findAllByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
         return productRepository.findAllByPriceRange(minPrice, maxPrice);
     }
-
 
     public boolean unlinkProductFromBrandById(@NotNull Long idBrand){
         List<Product> productList = this.findAllByBrand(idBrand);
         for (Product product : productList){
             product.setBrand(null);
-            this.update(product);
-        }
-        return true;
-    }
-
-    public boolean unlinkProductFromDiscountById(@NotNull Long idDiscount){
-        List<Product> productList = this.findAllByDiscount(idDiscount);
-        for (Product product : productList){
-            product.setProductDiscount(null);
             this.update(product);
         }
         return true;
@@ -157,6 +177,18 @@ public class ProductService {
         }
         else{
             return false;
+        }
+    }
+
+    private void isProductSale(Product product){
+        if(product.getDiscountPercentage() != null && product.getDiscountPercentage().compareTo(new BigDecimal(0)) == 1){
+            product.setSale(true);
+            product.setPriceDiscount(currencyCLP.applyDiscount(product.getPrice(), product.getDiscountPercentage()));
+        }
+        else{
+            product.setSale(false);
+            product.setDiscountPercentage(null);
+            product.setPriceDiscount(null);
         }
     }
 }

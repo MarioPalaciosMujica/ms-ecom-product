@@ -15,7 +15,7 @@ public class MaterialMap {
             MaterialModel model = new MaterialModel();
             model.setIdMaterial(entity.getIdMaterial());
             model.setBarcode(entity.getBarcode());
-            model.setName(entity.getName());
+            model.setTitle(entity.getTitle());
             model.setDescription(entity.getDescription());
             model.setCreated(entity.getCreated());
             model.setModified(entity.getModified());
@@ -31,7 +31,7 @@ public class MaterialMap {
             Material entity = new Material();
             entity.setIdMaterial(model.getIdMaterial());
             entity.setBarcode(model.getBarcode());
-            entity.setName(model.getName());
+            entity.setTitle(model.getTitle());
             entity.setDescription(model.getDescription());
             entity.setCreated(model.getCreated());
             entity.setModified(model.getModified());

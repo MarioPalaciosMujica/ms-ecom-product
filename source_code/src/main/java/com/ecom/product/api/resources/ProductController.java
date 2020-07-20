@@ -57,6 +57,71 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesByTag(idTag));
     }
 
+    @RequestMapping(value = "/findAllNew", method = RequestMethod.GET)
+    public List<ProductModel> findAllNew(){
+        return productMap.toModelList(productService.findAllNew());
+    }
+
+    @RequestMapping(value = "/findAllActivesNew", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesNew(){
+        return productMap.toModelList(productService.findAllActivesNew());
+    }
+
+    @RequestMapping(value = "/findAllNotNew", method = RequestMethod.GET)
+    public List<ProductModel> findAllNotNew(){
+        return productMap.toModelList(productService.findAllNotNew());
+    }
+
+    @RequestMapping(value = "/findAllActivesNotNew", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesNotNew(){
+        return productMap.toModelList(productService.findAllActivesNotNew());
+    }
+
+    @RequestMapping(value = "/findAllOnSale", method = RequestMethod.GET)
+    public List<ProductModel> findAllOnSale(){
+        return productMap.toModelList(productService.findAllOnSale());
+    }
+
+    @RequestMapping(value = "/findAllActivesOnSale", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesOnSale(){
+        return productMap.toModelList(productService.findAllActivesOnSale());
+    }
+
+    @RequestMapping(value = "/findAllNotOnSale", method = RequestMethod.GET)
+    public List<ProductModel> findAllNotOnSale(){
+        return productMap.toModelList(productService.findAllNotOnSale());
+    }
+
+    @RequestMapping(value = "/findAllActivesNotOnSale", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesNotOnSale(){
+        return productMap.toModelList(productService.findAllActivesNotOnSale());
+    }
+
+    @RequestMapping(value = "/findAllByCollection", method = RequestMethod.GET)
+    public List<ProductModel> findAllByCollection(@PathVariable @NotNull Long idCollection){
+        return productMap.toModelList(productService.findAllByCollection(idCollection));
+    }
+
+    @RequestMapping(value = "/findAllActivesByCollection", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesByCollection(@PathVariable @NotNull Long idCollection){
+        return productMap.toModelList(productService.findAllActivesByCollection(idCollection));
+    }
+
+    @RequestMapping(value = "/findAllInStock", method = RequestMethod.GET)
+    public List<ProductModel> findAllInStock(){
+        return productMap.toModelList(productService.findAllInStock());
+    }
+
+    @RequestMapping(value = "/findAllActivesInStock", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesInStock(){
+        return productMap.toModelList(productService.findAllActivesInStock());
+    }
+
+    @RequestMapping(value = "/findAllNotInStock", method = RequestMethod.GET)
+    public List<ProductModel> findAllNotInStock(){
+        return productMap.toModelList(productService.findAllNotInStock());
+    }
+
     @RequestMapping(value = "/findAllByCategory/{idCategory}", method = RequestMethod.GET)
     public List<ProductModel> findAllByCategory(@PathVariable @NotNull Long idCategory){
         return productMap.toModelList(productService.findAllByCategory(idCategory));
@@ -67,16 +132,6 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesByCategory(idCategory));
     }
 
-    @RequestMapping(value = "/findAllByFeatureType/{idFeatureType}", method = RequestMethod.GET)
-    public List<ProductModel> findAllByFeatureType(@PathVariable @NotNull Long idFeatureType){
-        return productMap.toModelList(productService.findAllByFeatureType(idFeatureType));
-    }
-
-    @RequestMapping(value = "/findAllActivesByFeatureType/{idFeatureType}", method = RequestMethod.GET)
-    public List<ProductModel> findAllActivesByFeatureType(@PathVariable @NotNull Long idFeatureType){
-        return productMap.toModelList(productService.findAllActivesByFeatureType(idFeatureType));
-    }
-
     @RequestMapping(value = "/findAllByBrand/{idTag}", method = RequestMethod.GET)
     public List<ProductModel> findAllByBrand(@PathVariable @NotNull Long idBrand){
         return productMap.toModelList(productService.findAllByBrand(idBrand));
@@ -85,16 +140,6 @@ public class ProductController {
     @RequestMapping(value = "/findAllActivesByBrand/{idTag}", method = RequestMethod.GET)
     public List<ProductModel> findAllActivesByBrand(@PathVariable @NotNull Long idBrand){
         return productMap.toModelList(productService.findAllActivesByBrand(idBrand));
-    }
-
-    @RequestMapping(value = "/findAllByDiscount/{idTag}", method = RequestMethod.GET)
-    public List<ProductModel> findAllByDiscount(@PathVariable @NotNull Long idDiscount){
-        return productMap.toModelList(productService.findAllByDiscount(idDiscount));
-    }
-
-    @RequestMapping(value = "/findAllActivesByDiscount/{idTag}", method = RequestMethod.GET)
-    public List<ProductModel> findAllActivesByDiscount(@PathVariable @NotNull Long idDiscount){
-        return productMap.toModelList(productService.findAllActivesByDiscount(idDiscount));
     }
 
     @RequestMapping(value = "/findAllByNameLike/{partialName}", method = RequestMethod.GET)

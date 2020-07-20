@@ -8,19 +8,13 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class FeatureTypeModel {
+public class CollectionModel {
 
-    @JsonProperty("idFeatureType")
-    private Long idFeatureType;
+    @JsonProperty("idCollection")
+    private Long idCollection;
 
     @JsonProperty("name")
     private String name;
-
-    @JsonProperty("description")
-    private String description;
-
-    @JsonProperty("level")
-    private int level;
 
     @JsonProperty("created")
     private Date created;
