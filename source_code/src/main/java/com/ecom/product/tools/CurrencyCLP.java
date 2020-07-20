@@ -12,6 +12,15 @@ public class CurrencyCLP {
         return this.roundClp(this.substractRoundingDecimals(total, discountPercentage));
     }
 
+    public BigDecimal calculateAmountByPercentage(BigDecimal total, BigDecimal taxPercentage){
+        if(taxPercentage.compareTo(new BigDecimal(0)) == 1){
+            return this.calculatePercentage(total, taxPercentage).setScale(0, RoundingMode.CEILING);
+        }
+        else {
+            return new BigDecimal(0);
+        }
+    }
+
     public BigDecimal roundClp(BigDecimal total){
         total = total.setScale(0, RoundingMode.CEILING);
         BigDecimal remainder = total.remainder(new BigDecimal(10));
