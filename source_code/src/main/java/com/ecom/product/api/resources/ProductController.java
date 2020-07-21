@@ -142,18 +142,24 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesByBrand(idBrand));
     }
 
-    @RequestMapping(value = "/findAllByTitleLike/{partialName}", method = RequestMethod.GET)
-    public List<ProductModel> findAllByTitleLike(@PathVariable @NotNull String partialName){
-        return productMap.toModelList(productService.findAllByTitleLike(partialName));
+    @RequestMapping(value = "/findAllByTitle/{partialTitle}", method = RequestMethod.GET)
+    public List<ProductModel> findAllByTitle(@PathVariable @NotNull String partialTitle){
+        return productMap.toModelList(productService.findAllByTitle(partialTitle));
     }
 
-    @RequestMapping(value = "/findAllByPriceRange/{minPrice}/{maxPrice}", method = RequestMethod.GET)
-    public List<ProductModel> findAllByPriceRange(@PathVariable @NotNull BigDecimal minPrice, @PathVariable @NotNull BigDecimal maxPrice){
-        return productMap.toModelList(productService.findAllByPriceRange(minPrice, maxPrice));
+    @RequestMapping(value = "/findAllActivesByTitle/{partialTitle}", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesByTitle(@PathVariable @NotNull String partialTitle){
+        return productMap.toModelList(productService.findAllActivesByTitle(partialTitle));
+    }
+
+    @RequestMapping(value = "/findAllActivesByPriceRange/{minPrice}/{maxPrice}", method = RequestMethod.GET)
+    public List<ProductModel> findAllActivesByPriceRange(@PathVariable @NotNull BigDecimal minPrice, @PathVariable @NotNull BigDecimal maxPrice){
+        return productMap.toModelList(productService.findAllActivesByPriceRange(minPrice, maxPrice));
     }
 
     @RequestMapping(value = "/updateRanking/{id}", method = RequestMethod.PATCH)
     public void updateRanking(@PathVariable @NotNull Long id){
         productService.updateRanking(id);
     }
+
 }

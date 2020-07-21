@@ -23,9 +23,6 @@ public class Tag {
     @Size(min = 2, max = 50, message = "name size not valid")
     private String name;
 
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
-
     @Column(name = "created", nullable = false)
     private Date created;
 
@@ -57,14 +54,6 @@ public class Tag {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
     }
 
     public Date getCreated() {

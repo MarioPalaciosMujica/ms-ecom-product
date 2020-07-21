@@ -1,5 +1,6 @@
 package com.ecom.product.dalc.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tbl_products")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -34,7 +36,7 @@ public class Product {
     private boolean isNew;
 
     @Column(name = "rating")
-    private int rating;
+    private Integer rating;
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
@@ -49,7 +51,7 @@ public class Product {
     private BigDecimal priceDiscount;
 
     @Column(name = "stock")
-    private int stock;
+    private Integer stock;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -96,6 +98,14 @@ public class Product {
     )
     private Set<Tag> tags;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tbr_products_materials",
+            joinColumns = @JoinColumn(name = "id_product"),
+            inverseJoinColumns = @JoinColumn(name = "id_material")
+    )
+    private Set<Material> materials;
+
 
     public Long getIdProduct() {
         return idProduct;
@@ -137,11 +147,11 @@ public class Product {
         isNew = aNew;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -177,11 +187,11 @@ public class Product {
         this.priceDiscount = priceDiscount;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
@@ -255,5 +265,13 @@ public class Product {
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
+    }
+
+    public Set<Material> getMaterials() {
+        return materials;
+    }
+
+    public void setMaterials(Set<Material> materials) {
+        this.materials = materials;
     }
 }

@@ -51,10 +51,10 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p where p.collection.idCollection = :idCollection and p.isActive = true")
     List<Product> findAllActivesByCollection(@Param("idCollection") Long idCollection);
 
-    @Query("select p from Product p where p.stock >= 1 and p.stock is null")
+    @Query("select p from Product p where p.stock >= 1 or p.stock is null")
     List<Product> findAllInStock();
 
-    @Query("select p from Product p where p.stock >= 1 and p.stock is null and p.isActive = true")
+    @Query("select p from Product p where (p.stock >= 1 or p.stock is null) and p.isActive = true")
     List<Product> findAllActivesInStock();
 
     @Query("select p from Product p where p.stock <= 0 and p.stock is not null")
@@ -72,11 +72,13 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p join p.categories c where c.idCategory = :idCategory and p.isActive = true")
     List<Product> findAllActivesByCategory(@Param("idCategory") Long idCategory);
 
-    List<Product> findByTitleContainingIgnoreCase(@Param("partialName") String partialName);
+    @Query("select p from Product p where lower(p.title) like %:partialTitle%")
+    List<Product> findAllByTitle(@Param("partialTitle") String partialTitle);
 
-    //TODO: find actives by partial name
+    @Query("select p from Product p where lower(p.title) like %:partialTitle% and p.isActive = true")
+    List<Product> findAllActivesByTitle(@Param("partialTitle") String partialTitle);
 
-    @Query("select p from Product p where p.price >= :minPrice and p.price <= :maxPrice order by p.price desc")
-    List<Product> findAllByPriceRange(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice);
+    @Query("select p from Product p where p.price >= :minPrice and p.price <= :maxPrice and p.isActive = true order by p.price desc")
+    List<Product> findAllActivesByPriceRange(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice);
 
 }

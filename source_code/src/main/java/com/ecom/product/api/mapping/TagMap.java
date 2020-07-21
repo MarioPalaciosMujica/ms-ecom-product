@@ -15,7 +15,6 @@ public class TagMap {
             TagModel model = new TagModel();
             model.setIdTag(entity.getIdTag());
             model.setName(entity.getName());
-            model.setActive(entity.isActive());
             model.setCreated(entity.getCreated());
             model.setModified(entity.getModified());
             return model;
@@ -30,7 +29,6 @@ public class TagMap {
             Tag entity = new Tag();
             entity.setIdTag(model.getIdTag());
             entity.setName(model.getName());
-            entity.setActive(model.isActive());
             entity.setCreated(model.getCreated());
             entity.setModified(model.getModified());
             return entity;

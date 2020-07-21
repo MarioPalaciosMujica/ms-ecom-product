@@ -28,7 +28,7 @@ public class ProductModel {
     private boolean isNew;
 
     @JsonProperty("rating")
-    private int rating;
+    private Integer rating;
 
     @JsonProperty("price")
     private BigDecimal price;
@@ -43,7 +43,7 @@ public class ProductModel {
     private BigDecimal priceDiscount;
 
     @JsonProperty("stock")
-    private int stock;
+    private Integer stock;
 
     @JsonProperty("isActive")
     private boolean isActive;
@@ -71,5 +71,8 @@ public class ProductModel {
 
     @JsonProperty("tags")
     private List<TagModel> tags;
+
+    @JsonProperty("materials")
+    private List<MaterialModel> materials;
 
 }

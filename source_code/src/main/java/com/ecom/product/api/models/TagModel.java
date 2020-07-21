@@ -16,9 +16,6 @@ public class TagModel {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("isActive")
-    private boolean isActive;
-
     @JsonProperty("created")
     private Date created;
 

@@ -149,12 +149,16 @@ public class ProductService {
         return productRepository.findAllActivesByCategory(idCategory);
     }
 
-    public List<Product> findAllByTitleLike(@NotNull String partialName){
-        return productRepository.findByTitleContainingIgnoreCase(partialName);
+    public List<Product> findAllByTitle(@NotNull String partialTitle){
+        return productRepository.findAllByTitle(partialTitle.trim().toLowerCase());
     }
 
-    public List<Product> findAllByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
-        return productRepository.findAllByPriceRange(minPrice, maxPrice);
+    public List<Product> findAllActivesByTitle(@NotNull String partialTitle){
+        return productRepository.findAllActivesByTitle(partialTitle.trim().toLowerCase());
+    }
+
+    public List<Product> findAllActivesByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
+        return productRepository.findAllActivesByPriceRange(minPrice, maxPrice);
     }
 
     public boolean unlinkProductFromBrandById(@NotNull Long idBrand){

@@ -17,6 +17,7 @@ public class ProductMap {
     @Autowired private BrandMap brandMap;
     @Autowired private TagMap tagMap;
     @Autowired private CollectionMap collectionMap;
+    @Autowired private MaterialMap materialMap;
 
     public ProductModel toModel(Product entity){
         if(entity != null){
@@ -44,6 +45,7 @@ public class ProductMap {
 
             model.setCategories(this.categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
             model.setTags(this.tagMap.toModelList(new ArrayList<>(entity.getTags())));
+            model.setMaterials(this.materialMap.toModelList(new ArrayList<>(entity.getMaterials())));
             return model;
         }
         else{
@@ -77,6 +79,7 @@ public class ProductMap {
 
             entity.setCategories(new HashSet<>(this.categoryMap.toEntityList(model.getCategories())));
             entity.setTags(new HashSet<>(this.tagMap.toEntityList(model.getTags())));
+            entity.setMaterials(new HashSet<>(this.materialMap.toEntityList(model.getMaterials())));
             return entity;
         }
         else{
