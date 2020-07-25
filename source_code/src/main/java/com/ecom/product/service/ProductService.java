@@ -1,5 +1,6 @@
 package com.ecom.product.service;
 
+import com.ecom.product.dalc.entities.Collection;
 import com.ecom.product.dalc.entities.Product;
 import com.ecom.product.dalc.repositories.IProductRepository;
 import com.ecom.product.tools.CurrencyCLP;

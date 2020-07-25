@@ -17,6 +17,7 @@ public class InitService {
     @Autowired private ImageService imageService;
     @Autowired private MaterialService materialService;
     @Autowired private ProductService productService;
+    @Autowired private CollectionService collectionService;
 
     public void start(){
 
@@ -54,35 +55,40 @@ public class InitService {
         image4 = imageService.save(image4);
         image5 = imageService.save(image5);
 
+        Collection col1 = new Collection(null, "Destacados", null, null, null);
+        Collection col2 = new Collection(null, "Navidad", null, null, null);
+        col1 = collectionService.save(col1);
+        col2 = collectionService.save(col2);
+
         Product prod1 = new Product(null, null, "Torta tres leches", "desc", true, 0, new BigDecimal(25000),
                 false, null, null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col1, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         Product prod2 = new Product(null, null, "Alfajor de chocolate", "desc", true, 0, new BigDecimal(30500),
                 false, null, null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col1, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         Product prod3 = new Product(null, null, "Pie de limon", "desc", true, 0, new BigDecimal(9990),
                 false, null, null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col1, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         Product prod4 = new Product(null, null, "Empanada de pino", "desc", true, 0, new BigDecimal(4490),
                 true, new BigDecimal(20), null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col1, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         Product prod5 = new Product(null, null, "Torta especial", "desc", true, 0, new BigDecimal(30000),
                 true, new BigDecimal(40), null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col2, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         Product prod6 = new Product(null, null, "Huevos de pascuas", "desc", true, 0, new BigDecimal(2990),
                 false, null, null, null, true, null, null,
                 image1, null, new HashSet<Image>(Arrays.asList(image2, image3, image4, image5)), new HashSet<Category>(Arrays.asList(cat1, cat2)),
-                null, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
+                col2, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), new HashSet<Material>(Arrays.asList(mat1, mat2, mat3, mat4)));
 
         productService.save(prod1);
         productService.save(prod2);

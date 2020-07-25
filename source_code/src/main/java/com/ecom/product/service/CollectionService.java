@@ -13,18 +13,18 @@ import java.util.Optional;
 @Service
 public class CollectionService {
 
-    @Autowired private ICollectionRepository featuredProductRepository;
+    @Autowired private ICollectionRepository collectionRepository;
 
     public Collection save(@NotNull Collection entity){
         entity.setIdCollection(null);
         entity.setCreated(new Date());
         entity.setModified(null);
-        featuredProductRepository.save(entity);
+        collectionRepository.save(entity);
         return entity;
     }
 
     public Collection findById(@NotNull Long id){
-        Optional<Collection> entity = featuredProductRepository.findById(id);
+        Optional<Collection> entity = collectionRepository.findById(id);
         if(entity.isPresent()){
             return entity.get();
         }
@@ -34,22 +34,52 @@ public class CollectionService {
     }
 
     public List<Collection> findAll(){
-        return featuredProductRepository.findAll();
+        return collectionRepository.findAll();
     }
 
     public boolean update(@NotNull Collection entity){
         entity.setModified(new Date());
-        featuredProductRepository.save(entity);
+        collectionRepository.save(entity);
         return true;
     }
 
     public boolean deleteById(@NotNull Long id){
         if(this.findById(id) != null){
-            featuredProductRepository.deleteById(id);
+            collectionRepository.deleteById(id);
             return true;
         }
         else {
             return false;
         }
     }
+
+//    public List<Collection> findAllWithProducts(){
+//        return collectionRepository.findAllWithProducts();
+//    }
+//
+//    public List<Collection> findAllWithProductsActives(){
+//        return collectionRepository.findAllWithProductsActives();
+//    }
+//
+//    public Collection findByIdlWithProducts(@NotNull Long id){
+//        Optional<Collection> entity = collectionRepository.findByIdlWithProducts(id);
+//        if(entity.isPresent()){
+//            return entity.get();
+//        }
+//        else{
+//            return null;
+//        }
+//    }
+//
+//    public Collection findByIdlWithProductsActives(@NotNull Long id){
+//        Optional<Collection> entity = collectionRepository.findByIdlWithProductsActives(id);
+//        if(entity.isPresent()){
+//            return entity.get();
+//        }
+//        else{
+//            return null;
+//        }
+//    }
+
+
 }

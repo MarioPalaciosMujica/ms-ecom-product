@@ -2,7 +2,6 @@ package com.ecom.product.api.mapping;
 
 import com.ecom.product.api.models.CollectionModel;
 import com.ecom.product.dalc.entities.Collection;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

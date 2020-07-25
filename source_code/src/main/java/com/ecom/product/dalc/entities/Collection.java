@@ -1,5 +1,6 @@
 package com.ecom.product.dalc.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tbl_collections")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Collection {
 
     @Id
