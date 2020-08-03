@@ -2,6 +2,7 @@ package com.ecom.product.service;
 
 import com.ecom.product.dalc.entities.Collection;
 import com.ecom.product.dalc.entities.Product;
+import com.ecom.product.dalc.entities.Tag;
 import com.ecom.product.dalc.repositories.IProductRepository;
 import com.ecom.product.tools.CurrencyCLP;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -80,6 +82,60 @@ public class ProductService {
 
     public List<Product> findAllActivesByTag(@NotNull Long idTag){
         return productRepository.findAllActivesByTag(idTag);
+    }
+
+    public List<Product> findAllByTags(@NotNull List<Tag> tagList){
+        List<Product> duplicateList = new ArrayList<>();
+        List<Product> cleanList = new ArrayList<>();
+        for (Tag tag : tagList){
+            duplicateList.addAll(this.findAllByTag(tag.getIdTag()));
+        }
+        boolean isNotDuplicate = true;
+        for (Product duplicateItem: duplicateList){
+            if(cleanList.size() > 0){
+                for (Product cleanItem: cleanList){
+                    if(duplicateItem.getIdProduct() == cleanItem.getIdProduct()){
+                        isNotDuplicate = false;
+                    }
+                }
+                if(isNotDuplicate){
+                    cleanList.add(duplicateItem);
+                    isNotDuplicate = true;
+                }
+            }
+            else {
+                cleanList.add(duplicateItem);
+                isNotDuplicate = true;
+            }
+        }
+        return cleanList;
+    }
+
+    public List<Product> findAllActivesByTags(@NotNull List<Tag> tagList){
+        List<Product> duplicateList = new ArrayList<>();
+        List<Product> cleanList = new ArrayList<>();
+        for (Tag tag : tagList){
+            duplicateList.addAll(this.findAllActivesByTag(tag.getIdTag()));
+        }
+        boolean isNotDuplicate = true;
+        for (Product duplicateItem: duplicateList){
+            if(cleanList.size() > 0){
+                for (Product cleanItem: cleanList){
+                    if(duplicateItem.getIdProduct() == cleanItem.getIdProduct()){
+                        isNotDuplicate = false;
+                    }
+                }
+                if(isNotDuplicate){
+                    cleanList.add(duplicateItem);
+                    isNotDuplicate = true;
+                }
+            }
+            else {
+                cleanList.add(duplicateItem);
+                isNotDuplicate = true;
+            }
+        }
+        return cleanList;
     }
 
     public List<Product> findAllByBrand(@NotNull Long idBrand){
@@ -161,6 +217,8 @@ public class ProductService {
     public List<Product> findAllActivesByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
         return productRepository.findAllActivesByPriceRange(minPrice, maxPrice);
     }
+
+
 
     public boolean unlinkProductFromBrandById(@NotNull Long idBrand){
         List<Product> productList = this.findAllByBrand(idBrand);

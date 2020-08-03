@@ -53,33 +53,4 @@ public class CollectionService {
         }
     }
 
-//    public List<Collection> findAllWithProducts(){
-//        return collectionRepository.findAllWithProducts();
-//    }
-//
-//    public List<Collection> findAllWithProductsActives(){
-//        return collectionRepository.findAllWithProductsActives();
-//    }
-//
-//    public Collection findByIdlWithProducts(@NotNull Long id){
-//        Optional<Collection> entity = collectionRepository.findByIdlWithProducts(id);
-//        if(entity.isPresent()){
-//            return entity.get();
-//        }
-//        else{
-//            return null;
-//        }
-//    }
-//
-//    public Collection findByIdlWithProductsActives(@NotNull Long id){
-//        Optional<Collection> entity = collectionRepository.findByIdlWithProductsActives(id);
-//        if(entity.isPresent()){
-//            return entity.get();
-//        }
-//        else{
-//            return null;
-//        }
-//    }
-
-
 }

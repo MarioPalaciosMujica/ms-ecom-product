@@ -1,7 +1,9 @@
 package com.ecom.product.api.resources;
 
 import com.ecom.product.api.mapping.ProductMap;
+import com.ecom.product.api.mapping.TagMap;
 import com.ecom.product.api.models.ProductModel;
+import com.ecom.product.api.models.TagModel;
 import com.ecom.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ public class ProductController {
 
     @Autowired private ProductService productService;
     @Autowired private ProductMap productMap;
+    @Autowired private TagMap tagMap;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void save(@RequestBody @NotNull ProductModel model){
@@ -55,6 +58,18 @@ public class ProductController {
     @RequestMapping(value = "/findAllActivesByTag/{idTag}", method = RequestMethod.GET)
     public List<ProductModel> findAllActivesByTag(@PathVariable @NotNull Long idTag){
         return productMap.toModelList(productService.findAllActivesByTag(idTag));
+    }
+
+    // POST method only used because Body parameter, but this is a GET call in practice.
+    @RequestMapping(value = "/findAllByTags", method = RequestMethod.POST)
+    public List<ProductModel> findAllByTags(@RequestBody @NotNull List<TagModel> tagList){
+        return productMap.toModelList(productService.findAllByTags(tagMap.toEntityList(tagList)));
+    }
+
+    // POST method only used because Body parameter, but this is a GET call in practice.
+    @RequestMapping(value = "/findAllActivesByTags", method = RequestMethod.POST)
+    public List<ProductModel> findAllActivesByTags(@RequestBody @NotNull List<TagModel> tagList){
+        return productMap.toModelList(productService.findAllActivesByTags(tagMap.toEntityList(tagList)));
     }
 
     @RequestMapping(value = "/findAllNew", method = RequestMethod.GET)
