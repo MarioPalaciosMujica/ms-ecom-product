@@ -54,8 +54,8 @@ public class ProductModel {
     @JsonProperty("modified")
     private Date modified;
 
-    @JsonProperty("image")
-    private ImageModel image;
+//    @JsonProperty("image")
+//    private ImageModel image;
 
     @JsonProperty("brand")
     private BrandModel brand;

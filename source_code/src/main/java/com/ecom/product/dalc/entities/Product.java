@@ -62,9 +62,9 @@ public class Product {
     @Column(name = "modified")
     private Date modified;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_image")
-    private Image image;
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_image")
+//    private Image image;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_brand")
@@ -219,13 +219,13 @@ public class Product {
         this.modified = modified;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
+//    public Image getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(Image image) {
+//        this.image = image;
+//    }
 
     public Brand getBrand() {
         return brand;

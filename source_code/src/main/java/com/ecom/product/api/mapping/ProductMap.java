@@ -37,7 +37,7 @@ public class ProductMap {
             model.setActive(entity.isActive());
             model.setCreated(entity.getCreated());
             model.setModified(entity.getModified());
-            model.setImage(this.imageMap.toModel(entity.getImage()));
+//            model.setImage(this.imageMap.toModel(entity.getImage()));
             model.setBrand(this.brandMap.toModel(entity.getBrand()));
 
             model.setCollection(this.collectionMap.toModel(entity.getCollection()));
@@ -71,7 +71,7 @@ public class ProductMap {
             entity.setActive(model.isActive());
             entity.setCreated(model.getCreated());
             entity.setModified(model.getModified());
-            entity.setImage(this.imageMap.toEntity(model.getImage()));
+//            entity.setImage(this.imageMap.toEntity(model.getImage()));
             entity.setBrand(this.brandMap.toEntity(model.getBrand()));
 
             entity.setCollection(this.collectionMap.toEntity(model.getCollection()));

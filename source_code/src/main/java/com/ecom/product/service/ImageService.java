@@ -31,6 +31,12 @@ public class ImageService {
         return entity;
     }
 
+    public void saveAll(@NotNull List<Image> imageList){
+        for (Image img : imageList){
+            this.save(img);
+        }
+    }
+
     public Image findById(@NotNull Long id){
         Optional<Image> entity = imageRepository.findById(id);
         if(entity.isPresent()){
