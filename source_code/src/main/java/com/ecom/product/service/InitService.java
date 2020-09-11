@@ -21,389 +21,404 @@ public class InitService {
     public void start(){
 
         // Categories:
-        Category cat1 = new Category(null, "Tortas", new Date(), null, null);
-        Category cat2 = new Category(null, "Alfajores", new Date(), null, null);
-        Category cat3 = new Category(null, "Vanguardia", new Date(), null, null);
-        Category cat4 = new Category(null, "Coctel", new Date(), null, null);
-        Category cat5 = new Category(null, "Pasteles", new Date(), null, null);
-        Category cat6 = new Category(null, "Masas", new Date(), null, null);
-        cat1 = categoryService.save(cat1);
-        cat2 = categoryService.save(cat2);
-        cat3 = categoryService.save(cat3);
-        cat4 = categoryService.save(cat4);
-        cat5 = categoryService.save(cat5);
-        cat6 = categoryService.save(cat6);
+        Category tradicionales = new Category(null, "Tortas Tradicionáles", new Date(), null, null);
+        Category vanguard = new Category(null, "Tortas de Vanguardia", new Date(), null, null);
+        //Category alfajores = new Category(null, "Alfajores", new Date(), null, null);
+        Category coctel = new Category(null, "Coctel", new Date(), null, null);
+        Category masas = new Category(null, "Masas", new Date(), null, null);
+        Category dulces = new Category(null, "Dulces", new Date(), null, null);
+        Category pan = new Category(null, "Pan", new Date(), null, null);
+
+        tradicionales = categoryService.save(tradicionales);
+        vanguard = categoryService.save(vanguard);
+        //alfajores = categoryService.save(alfajores);
+        coctel = categoryService.save(coctel);
+        masas = categoryService.save(masas);
+        dulces = categoryService.save(dulces);
+        pan = categoryService.save(pan);
         // -------------------------------------------------------------------------------------------------------------
 
         // Tags:
 
-        Tag tag1 = new Tag(null, "Sin azúcar", null, null, null);
-        Tag tag2 = new Tag(null, "Sin lactosa", null, null, null);
-        Tag tag3 = new Tag(null, "Sin gluten", null, null, null);
-        Tag tag4 = new Tag(null, "Sin leche", null, null, null);
-        Tag tag5 = new Tag(null, "Huevos", null, null, null);
-        Tag tag6 = new Tag(null, "Mermelada", null, null, null);
-        Tag tag7 = new Tag(null, "Biscocho", null, null, null);
-        Tag tag8 = new Tag(null, "Crema vegetal", null, null, null);
-        Tag tag9 = new Tag(null, "Almendras", null, null, null);
-        Tag tag10 = new Tag(null, "Con stevia", null, null, null);
-        Tag tag11 = new Tag(null, "Con sucralosa", null, null, null);
-        tag1 = tagService.save(tag1);
-        tag2 = tagService.save(tag2);
-        tag3 = tagService.save(tag3);
-        tag4 = tagService.save(tag4);
-        tag5 = tagService.save(tag5);
-        tag6 = tagService.save(tag6);
-        tag7 = tagService.save(tag7);
-        tag8 = tagService.save(tag8);
-        tag9 = tagService.save(tag9);
-        tag10 = tagService.save(tag10);
-        tag11 = tagService.save(tag11);
-        // -------------------------------------------------------------------------------------------------------------
-
-        // Materials:
-        Material mat1 = new Material(null, null, "Chocolate", null, null, null, null);
-        Material mat2 = new Material(null, null, "Manjar", null, null, null, null);
-        Material mat3 = new Material(null, null, "Nueces", null, null, null, null);
-        Material mat4 = new Material(null, null, "Creeps", null, null, null, null);
-        mat1 = materialService.save(mat1);
-        mat2 = materialService.save(mat2);
-        mat3 = materialService.save(mat3);
-        mat4 = materialService.save(mat4);
+        Tag sinAzucar = new Tag(null, "Sin azúcar", null, null, null);
+        Tag sinLactosa = new Tag(null, "Sin lactosa", null, null, null);
+        Tag sinGluten = new Tag(null, "Sin gluten", null, null, null);
+        Tag sinLeche = new Tag(null, "Sin leche", null, null, null);
+        Tag conStevia = new Tag(null, "Con stevia", null, null, null);
+        Tag conSucralosa = new Tag(null, "Con sucralosa", null, null, null);
+        sinAzucar = tagService.save(sinAzucar);
+        sinLactosa = tagService.save(sinLactosa);
+        sinGluten = tagService.save(sinGluten);
+        sinLeche = tagService.save(sinLeche);
+        conStevia = tagService.save(conStevia);
+        conSucralosa = tagService.save(conSucralosa);
         // -------------------------------------------------------------------------------------------------------------
 
         // Images:
+        List<Image> listImages = this.genImages(new ArrayList<>(
+                Arrays.asList(
+                        "adornos_ninos_01", //
+                        "adornos_ninos_02", //
+                        "adornos_tortas_01", //
+                        "adornos_tortas_02", //
+                        "adornos_tortas_03", //
+                        "adornos_tortas_04", //
+                        "adornos_tortas_05", //
+                        "adornos_tortas_06", //
+                        "alfajores_01",
+                        "alfajores_02",
+                        "cupcake_diseno_01",
+                        "cupcake_diseno_02",
+                        "cupcake_diseno_03",
+                        "cupcake_diseno_04",
+                        "cupcake_diseno_05",
+                        "cupcake_diseno_06",
+                        "cupcake_tradicional_01",
+                        "cupcake_tradicional_02",
+                        "cupcake_tradicional_03",
+                        "empanadas_01",
+                        "empanadas_02",
+                        "empanadas_03",
+                        "fruta_01",
+                        "fruta_02",
+                        "frutos_del_bosque_01",
+                        "frutos_del_bosque_02",
+                        "frutos_del_bosque_03",
+                        "kuchen_arandano_01",
+                        "kuchen_manzana_01",
+                        "mousse_frutilla_01",
+                        "pastelitos_surtidos_01",
+                        "pastelitos_surtidos_02",
+                        "pastelitos_surtidos_03",
+                        "pastelitos_surtidos_04",
+                        "pie_limon_01",
+                        "sachertorte_01",
+                        "selva_negra_01",
+                        "selva_negra_02",
+                        "selva_negra_03",
+                        "tarta_indi_01",
+                        "tartaleta_01",
+                        "tartaleta_02",
+                        "tartaleta_03",
+                        "tartaleta_04",
+                        "tartaleta_05",
+                        "tartaleta_06",
+                        "tasitas_chocolate_01",
+                        "tasitas_chocolate_02",
+                        "torta_chocolate_01",
+                        "torta_chocolate_02",
+                        "torta_chocolate_03",
+                        "torta_chocolate_04",
+                        "torta_chocolate_05",
+                        "torta_hojarasca_manjar_01",
+                        "torta_manjar_chocolate_01",
+                        "torta_matcha_01",
+                        "torta_matcha_02",
+                        "torta_matcha_03",
+                        "torta_moka_01",
+                        "torta_moka_02",
+                        "torta_musse_frutas_01",
+                        "torta_naranja_01",
+                        "torta_oriente_01",
+                        "torta_oriente_02",
+                        "torta_pina_01",
+                        "torta_pina_02",
+                        "torta_pina_03",
+                        "torta_rosa_01",
+                        "torta_rosa_02",
+                        "torta_tres_leches_01",
+                        "torta_tres_leches_02",
+                        "canapes_01",
+                        "canapes_02",
+                        "pan_molde_01",
+                        "pan_molde_02",
+                        "pan_almendra_01",
+                        "torta_lucuma_01",
+                        "torta_manjar_01",
+                        "tapaditos_01",
+                        "tapaditos_02",
+                        "pan_linaza_01"
+                )
+        ));
 
-//        Image image1 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/1.jpg", null, null, null);
-//        Image image2 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/2.jpg", null, null, null);
-//        Image image3 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/3.jpg", null, null, null);
-//        Image image4 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/4.jpg", null, null, null);
-//        Image image5 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/5.jpg", null, null, null);
-//        Image image6 = new Image(null, "alt", "https://angular.pixelstrap.com/multikart/assets/images/product/flower/6.jpg", null, null, null);
-//        image1 = imageService.save(image1);
-//        image2 = imageService.save(image2);
-//        image3 = imageService.save(image3);
-//        image4 = imageService.save(image4);
-//        image5 = imageService.save(image5);
-//        image6 = imageService.save(image6);
-
-        String rootDir = "assets/dulcelia-demo/products/";
-        String imgExt = ".jpg";
-
-        Image alfajor1 = new Image(null, "", rootDir + "alfajor_1" + imgExt, null, null, null);
-        Image alfajor2 = new Image(null, "", rootDir + "alfajor_2" + imgExt, null, null, null);
-        Image alfajor3 = new Image(null, "", rootDir + "alfajor_3" + imgExt, null, null, null);
-
-        Image brownie1 = new Image(null, "", rootDir + "brownie_cafe_1" + imgExt, null, null, null);
-        Image brownie2 = new Image(null, "", rootDir + "brownie_chocolate_1" + imgExt, null, null, null);
-
-        Image huevoPascua1 = new Image(null, "", rootDir + "huevos_pascuas_1" + imgExt, null, null, null);
-        Image huevoPascua2 = new Image(null, "", rootDir + "huevos_pascuas_2" + imgExt, null, null, null);
-        Image huevoPascua3 = new Image(null, "", rootDir + "huevos_pascuas_3" + imgExt, null, null, null);
-
-        Image tortaAlmendra1 = new Image(null, "", rootDir + "torta_almendra_1" + imgExt, null, null, null);
-
-        Image tortaBisBlanco1 = new Image(null, "", rootDir + "torta_biscocho_blanco_1" + imgExt, null, null, null);
-        Image tortaBisBlanco2 = new Image(null, "", rootDir + "torta_biscocho_blanco_2" + imgExt, null, null, null);
-
-        Image tortaCafe1 = new Image(null, "", rootDir + "torta_cafe_1" + imgExt, null, null, null);
-        Image tortaCafe2 = new Image(null, "", rootDir + "torta_cafe_2" + imgExt, null, null, null);
-        Image tortaCafe3 = new Image(null, "", rootDir + "torta_cafe_3" + imgExt, null, null, null);
-        Image tortaCafe4 = new Image(null, "", rootDir + "torta_cafe_4" + imgExt, null, null, null);
-
-        Image tortaChoco1 = new Image(null, "", rootDir + "torta_chocolate_1" + imgExt, null, null, null);
-        Image tortaChoco2 = new Image(null, "", rootDir + "torta_chocolate_2" + imgExt, null, null, null);
-        Image tortaChoco3 = new Image(null, "", rootDir + "torta_chocolate_3" + imgExt, null, null, null);
-
-        Image tortaFruta1 = new Image(null, "", rootDir + "torta_fruta_1" + imgExt, null, null, null);
-        Image tortaFruta2 = new Image(null, "", rootDir + "torta_fruta_2" + imgExt, null, null, null);
-        Image tortaFruta3 = new Image(null, "", rootDir + "torta_fruta_3" + imgExt, null, null, null);
-
-        Image tortaHoja1 = new Image(null, "", rootDir + "torta_hojarasca_1" + imgExt, null, null, null);
-        Image tortaHoja2 = new Image(null, "", rootDir + "torta_hojarasca_2" + imgExt, null, null, null);
-        Image tortaHoja3 = new Image(null, "", rootDir + "torta_hojarasca_3" + imgExt, null, null, null);
-
-        Image tortaLeche1 = new Image(null, "", rootDir + "torta_leches_1" + imgExt, null, null, null);
-        Image tortaLeche2 = new Image(null, "", rootDir + "torta_leches_2" + imgExt, null, null, null);
-
-        Image tortaLucuma1 = new Image(null, "", rootDir + "torta_lucuma_1" + imgExt, null, null, null);
-        Image tortaLucuma2 = new Image(null, "", rootDir + "torta_lucuma_2" + imgExt, null, null, null);
-        Image tortaLucuma3 = new Image(null, "", rootDir + "torta_lucuma_3" + imgExt, null, null, null);
-        Image tortaLucuma4 = new Image(null, "", rootDir + "torta_lucuma_4" + imgExt, null, null, null);
-
-        Image tortaManjar1 = new Image(null, "", rootDir + "torta_manjar_1" + imgExt, null, null, null);
-        Image tortaManjar2 = new Image(null, "", rootDir + "torta_manjar_2" + imgExt, null, null, null);
-        Image tortaManjar3 = new Image(null, "", rootDir + "torta_manjar_3" + imgExt, null, null, null);
-
-        Image tortaMilHojas1 = new Image(null, "", rootDir + "torta_mil_hojas_1" + imgExt, null, null, null);
-        Image tortaMilHojas2 = new Image(null, "", rootDir + "torta_mil_hojas_2" + imgExt, null, null, null);
-
-        Image tortaNaranja1 = new Image(null, "", rootDir + "torta_naranja_1" + imgExt, null, null, null);
-
-        Image tortaOriente1 = new Image(null, "", rootDir + "torta_oriente_1" + imgExt, null, null, null);
-        Image tortaOriente2 = new Image(null, "", rootDir + "torta_oriente_2" + imgExt, null, null, null);
-
-        Image tortaPina1 = new Image(null, "", rootDir + "torta_pina_1" + imgExt, null, null, null);
-        Image tortaPina2 = new Image(null, "", rootDir + "torta_pina_2" + imgExt, null, null, null);
-        Image tortaPina3 = new Image(null, "", rootDir + "torta_pina_3" + imgExt, null, null, null);
-
-        Image tortaRosa1 = new Image(null, "", rootDir + "torta_rosa_1" + imgExt, null, null, null);
-        Image tortaRosa2 = new Image(null, "", rootDir + "torta_rosa_2" + imgExt, null, null, null);
-
-        Image sachertote1 = new Image(null, "", rootDir + "torta_sachertote_1" + imgExt, null, null, null);
-        Image sachertote2 = new Image(null, "", rootDir + "torta_sachertote_2" + imgExt, null, null, null);
-
-        Image tortaSelva1 = new Image(null, "", rootDir + "torta_selva_negra_1" + imgExt, null, null, null);
-
-        alfajor1 = imageService.save(alfajor1);
-        alfajor2 = imageService.save(alfajor2);
-        alfajor3 = imageService.save(alfajor3);
-
-        brownie1 = imageService.save(brownie1);
-        brownie2 = imageService.save(brownie2);
-
-        huevoPascua1 = imageService.save(huevoPascua1);
-        huevoPascua2 = imageService.save(huevoPascua2);
-        huevoPascua3 = imageService.save(huevoPascua3);
-
-        tortaAlmendra1 = imageService.save(tortaAlmendra1);
-
-        tortaBisBlanco1 = imageService.save(tortaBisBlanco1);
-        tortaBisBlanco2 = imageService.save(tortaBisBlanco2);
-
-        tortaCafe1 = imageService.save(tortaCafe1);
-        tortaCafe2 = imageService.save(tortaCafe2);
-        tortaCafe3 = imageService.save(tortaCafe3);
-        tortaCafe4 = imageService.save(tortaCafe4);
-
-        tortaChoco1 = imageService.save(tortaChoco1);
-        tortaChoco2 = imageService.save(tortaChoco2);
-        tortaChoco3 = imageService.save(tortaChoco3);
-
-        tortaFruta1 = imageService.save(tortaFruta1);
-        tortaFruta2 = imageService.save(tortaFruta2);
-        tortaFruta3 = imageService.save(tortaFruta3);
-
-        tortaHoja1 = imageService.save(tortaHoja1);
-        tortaHoja2 = imageService.save(tortaHoja2);
-        tortaHoja3 = imageService.save(tortaHoja3);
-
-        tortaLeche1 = imageService.save(tortaLeche1);
-        tortaLeche2 = imageService.save(tortaLeche2);
-
-        tortaLucuma1 = imageService.save(tortaLucuma1);
-        tortaLucuma2 = imageService.save(tortaLucuma2);
-        tortaLucuma3 = imageService.save(tortaLucuma3);
-        tortaLucuma4 = imageService.save(tortaLucuma4);
-
-        tortaManjar1 = imageService.save(tortaManjar1);
-        tortaManjar2 = imageService.save(tortaManjar2);
-        tortaManjar3 = imageService.save(tortaManjar3);
-
-        tortaMilHojas1 = imageService.save(tortaMilHojas1);
-        tortaMilHojas2 = imageService.save(tortaMilHojas2);
-
-        tortaNaranja1 = imageService.save(tortaNaranja1);
-
-        tortaOriente1 = imageService.save(tortaOriente1);
-        tortaOriente2 = imageService.save(tortaOriente2);
-
-        tortaPina1 = imageService.save(tortaPina1);
-        tortaPina2 = imageService.save(tortaPina2);
-        tortaPina3 = imageService.save(tortaPina3);
-
-        tortaRosa1 = imageService.save(tortaRosa1);
-        tortaRosa2 = imageService.save(tortaRosa2);
-
-        sachertote1 = imageService.save(sachertote1);
-        sachertote2 = imageService.save(sachertote2);
-
-        tortaSelva1 = imageService.save(tortaSelva1);
 
         // -------------------------------------------------------------------------------------------------------------
 
         // Collections:
-        Collection col1 = new Collection(null, "Destacados", null, null, null);
-        Collection col2 = new Collection(null, "Cumpleaños", null, null, null);
-        Collection col3 = new Collection(null, "Más Vendidos", null, null, null);
-        Collection col4 = new Collection(null, "Fechas Importantes", null, null, null);
-        col1 = collectionService.save(col1);
-        col2 = collectionService.save(col2);
-        col3 = collectionService.save(col3);
-        col4 = collectionService.save(col4);
+        Collection destacados = new Collection(null, "Destacados", null, null, null);
+        Collection populares = new Collection(null, "Populares", null, null, null);
+        Collection vendidos = new Collection(null, "Más Vendidos", null, null, null);
+        Collection fechas = new Collection(null, "Fechas Importantes", null, null, null);
+        destacados = collectionService.save(destacados);
+        populares = collectionService.save(populares);
+        vendidos = collectionService.save(vendidos);
+        fechas = collectionService.save(fechas);
         // -------------------------------------------------------------------------------------------------------------
 
         // Products:
-        String hojarascaDesc = "Manjar chocolates sin gluten, sin lactosa con stevia. Venta solo en local San Bernardo.";
-        String alfajoresDesc = "12 Unidades. Manjar chocolates sin gluten, sin lactosa con stevia.";
-        String rosaDesc = "Biscocho blanco, crema vegetal, mermelada de frambuesa, frambuesa natural, puede ser sin lactosa, con Stevia";
-        String selvaNegraDesc = "Biscocho Negro, crema vegetal, mermelada de frambuesa, frambuesa natural, guindas, cacao, chocolate. puede ser sin lactosa y con Stevia";
-        String lucumaDesc = "Biscocho Blanco, crema vegetal con Pulpa de lúcuma natural, puede ser con nuez o durazno, sin lactosa y con Stevia";
-        String frutaDesc = "Biscocho Blanco, crema vegetal, Piña, Mango o Fruta de la temporada, sin lactosa, con o con Stevia";
-        String mousseDesc = "Biscocho Blanco, crema vegetal, yogurt, Frutilla. Puede ser Sin lactosa, con o con Stevia";
-        String manjarDesc = "Biscocho blanco, crema vegetal con manjar, puede ser sin lactosa o sin azucar, con nuez o Durazno";
-        String pinaDesc = "Biscocho blanco, crema vegetal, Piña natural. Puede ser sin lactosa y con Stevia.";
-        String chocolateDesc = "Biscocho negro, crema vegetal, cobertura de chocolate con o sin azúcar 70% cacao. Puede ser sin lactosa, con sucralosa.";
-        String cafeDesc = "Biscocho Blanco, crema vegetal con café, puede ser con nuez. Puede ser Sin lactosa y con o sin Stevia";
+        String TortadeHojarasca = "Torta de Hojarasca, manjar chocolate. Sin Gluten, Sin Lactosa con Stevia. Venta solo en local San Bernardo. Torta para 15 personas.";
+        String AlfajoresdeManjaryChocolate = "Caja de 12 unidades.Sin Gluten, Sin Lactosa con Stevia. Sin Azucar añadida.";
+        String TortaRosa = "Biscocho blanco, crema vegetal, mermelada de frambuesa, frambuesa natural, puede ser sin lactosa, con Stevia. Torta para 15 personas.";
+        String SelvaNegra = "Biscocho Negro, crema vegetal, mermelada de frambuesa, frambuesa natural, guindas, cacao, chocolate. puede ser sin lactosa y  con Stevia. Torta para 15 personas.";
+        String TortadeLucuma = "Biscocho Blanco, crema vegetal con  Pulpa de lúcuma natural, puede ser con nuez o durazno. Sin lactosa y con Stevia. Torta para 15 personas.";
+        String TortadeFruta = "Biscocho Blanco, crema vegetal, Piña, Mango o Fruta de la temporada. Sin lactosa, con o sin Stevia. Torta para 15 personas.";
+        String TortadeMousseFrutilla = "Biscocho Blanco, crema vegetal, yogurt, Frutilla. Puede ser Sin lactosa, con o sin Stevia. Torta para 15 personas.";
+        String TortadeManjar = "Biscocho Blanco, crema vegetal, yogurt, Frutilla. Puede ser Sin lactosa, con o sin Stevia. Torta para 15 personas.";
+        String TortadePina = "Biscocho blanco, crema vegetal y piña natural. Puede ser sin lactosa y con Stevia Torta para 15 personas..";
+        String TortadeChocolate = "Biscocho negro, crema vegetal, cobertura de chocolate con o sin azúcar 70% cacao. Puede ser sin lactosa, con sucralosa. Torta para 15 personas.";
+        String TortadeCafé = "Biscocho negro, crema vegetal, cobertura de chocolate con o sin azúcar 70% cacao. Puede ser sin lactosa, con sucralosa. Torta para 15 personas.";
 
-        String vManjarAlmDesc = "Biscocho blanco, crema vegetal con manjar, almendras peladas. Puede ser sin azúcar o sin lactosa.";
-        String vNaranjaDesc = "Biscocho blanco, crema pastelera de jugo de naranja, cobertura de chocolate. Puede ser sin azúcar o sin leche.";
-        String vSanMarcosDesc = "Biscocho blanco, crema vegetal, crema de huevo, trufa de chocolate y almendras. Puede ser sin azúcar o sin leche.";
-        String vFrutosDesc = "Biscocho negro, crema vegetal, crema de chocolate, mermelada de berries, berries naturales. Puede ser sin azúcar o sin leche.";
-        String vOriente = "Biscocho blanco, crema vegetal, mousse de pistacho y almendras. Puede ser sin azúcar o sin leche.";
-        String vLechesDesc = "Biscocho blanco, crema vegetal, leche condensada, leche evaporada, merengue de huevo natural.";
-        String vSachertote = "Biscocho negro, crema de chocolate, mermelada de frambueza y damasco, bañado en chocolate. Puede ser sin azúcar o sin leche.";
-        String vHojasManjar = "Hojarasca, manjar con crema vegetal. Puede ser sin azúcar o sin leche.";
 
-        String pastelDesc = "Sin azúcar, sin gluten y sin lactosa.";
-        String empanadaDesc = "Sin azúcar, sin gluten y sin lactosa.";
-        String deliciasDesc = "Sin azúcar, sin gluten y sin lactosa.";
-        String pascuasDesc = "Sin azúcar, sin gluten y sin lactosa.";
+        String TortadeManjaryAlmendras = "Biscocho blanco, crema vegetal con manjar, almendras peladas. Puede ser sin azúcar o sin lactosa. Torta para 15 personas.";
+        String TortaSanMarcos = "Biscocho blanco, crema vegetal, crema de huevo, trufa de chocolate y almendras. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaOriente = "Biscocho blanco, crema vegetal, mousse de pistacho y almendras. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaSachertorte = "Biscocho negro, crema de chocolate, mermelada de frambueza y damasco, bañado en chocolate. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortadeNaranja = "Biscocho negro, crema de chocolate, mermelada de frambueza y damasco, bañado en chocolate. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaFrutosdelBosque = "Biscocho negro, crema vegetal, crema de chocolate, mermelada de berries, berries naturales. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaTresLeches = "Biscocho blanco, crema vegetal, leche condensada, leche evaporada, merengue de huevo natural. Torta para 15 personas.";
+        String TortaHojarascaManjar = "Hojarasca, manjar con crema vegetal. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaManjarChocolate = "Torta de mankar y chocolate. Puede ser sin azúcar o sin leche. Torta para 15 personas.";
+        String TortaMatcha = "Torta insignia de Dulcelia. Sin gluten y puede ser sin azúcar o sin leche. Torta para 15 personas.";
 
-        Product tortaHojarasca = new Product(null, null, "Torta de Hojarasca", hojarascaDesc, true, 0, new BigDecimal(8900),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaHoja1, tortaHoja2, tortaHoja3)), new HashSet<Category>(Arrays.asList(cat1)),
-                col3, new HashSet<Tag>(Arrays.asList(tag3, tag10)), null);
+        String KuchenFrutas = "Kuchenes de diferentes frutas a elección. Puede ser sin lactosa, con sucralosa.";
+        String TartaletaFrutas = "Tartaletas de frutas de estación, a su elección. Puede ser sin lactosa, con sucralosa.";
+        String PieLimon = "Pie de Limón sin gluten. Puede ser sin lactosa, con sucralosa.";
 
-        Product alfajores = new Product(null, null, "Alfajores", alfajoresDesc, true, 0, new BigDecimal(9500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(alfajor1, alfajor2, alfajor3)), new HashSet<Category>(Arrays.asList(cat2)),
-                col4, new HashSet<Tag>(Arrays.asList(tag3, tag10)), null);
+        String PastelesSurtidos = "100 Unidades.";
+        String CupcakesTradicionales = "Los cupcakes tradicionáles que conoces. Pueden ser con mousse de chocolate o manjar. Sin gluten y sin lactosa. El precio es por cada unidad.";
+        String CupcakesDiseno = "Cupcakes con diferentes diseños, colores y adornos. Pueden ser con mousse de chocolate o manjar. Sin gluten y sin lactosa. El precio es por cada unidad.";
+        String CanapesSurtidos = "100 Unidades. ";
+        String Tapaditos = "100 Unidades. ";
+        String Pizzetas = "100 Unidades. ";
+        String Canoas  = "100 Unidades. Rellenas saltadas.";
+        String TacitasdeChocolate = "100 Unidades. Crema de diferentes sabores.";
 
-        Product tortaRosa = new Product(null, null, "Torta Rosa", rosaDesc, true, 0, new BigDecimal(19990),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaRosa1, tortaRosa2)), new HashSet<Category>(Arrays.asList(cat1)),
-                col2, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag6, tag7, tag8)), null);
+        String PanMolde = "Sin gluten, Sin leche, Sin azúcar";
+        String PanLinaza = "Sin gluten, Sin leche, Sin azúcar";
+        String PanAlmendras = "Sin gluten, Sin leche, Sin azúcar";
+        String PastelesBrazosdeReina = "100 Unidades.";
+        String EmpanaditasSurtidas = "Empanadas de pino, champiñón queso, verduras, camarones queso. Sin gluten, sin azucar y sin leche. 100 Unidades.";
+        String PandePascuas = "Sin gluten, sin azucar y sin leche.";
+        String Pan = "Sin gluten, sin azucar y sin leche.";
+        String Empanadas = "Sin gluten, sin azucar y sin leche.";
 
-        Product tortaSelvaNegra = new Product(null, null, "Selva Negra", selvaNegraDesc, true, 0, new BigDecimal(24500),
-                true, new BigDecimal(20), null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaSelva1)), new HashSet<Category>(Arrays.asList(cat1)),
-                col4, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag6, tag7, tag8)), null);
+        // TRADICIONALES
 
-        Product tortaLucuma = new Product(null, null, "Torta de Lúcuma", lucumaDesc, true, 0, new BigDecimal(34500),
-                true, new BigDecimal(40), null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaLucuma1, tortaLucuma2, tortaLucuma3, tortaLucuma4)), new HashSet<Category>(Arrays.asList(cat1)),
-                col4, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag7, tag8)), null);
+        // torta rosa
+        this.genProduct("Torta Rosa", TortaRosa, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_rosa_01", "torta_rosa_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), fechas, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product tortaFruta = new Product(null, null, "Torta de Fruta", frutaDesc, true, 0, new BigDecimal(43500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaFruta1, tortaFruta2, tortaFruta3)), new HashSet<Category>(Arrays.asList(cat1)),
-                col2, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag6, tag7, tag8)), null);
+        // torta selva negra
+        this.genProduct("Selva Negra", SelvaNegra, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("selva_negra_01", "selva_negra_02", "selva_negra_03"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product tortaMousseFrutilla = new Product(null, null, "Torta Mousse Frutilla", mousseDesc, true, 0, new BigDecimal(54500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaAlmendra1)), new HashSet<Category>(Arrays.asList(cat1)),
-                col2, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag7, tag8)), null);
+        // torta de piña
+        this.genProduct("Torta de Piña", TortadePina, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_pina_01", "torta_pina_02", "torta_pina_03"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product tortaManjar = new Product(null, null, "Torta de Manjar", manjarDesc, true, 0, new BigDecimal(19990),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaManjar1, tortaManjar2, tortaManjar3)), new HashSet<Category>(Arrays.asList(cat1)),
-                col2, new HashSet<Tag>(Arrays.asList(tag1, tag3, tag7, tag8)), null);
+        // torta de lucuma
+        this.genProduct("Torta de Lúcuma", TortadeLucuma, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_lucuma_01"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product tortaPina = new Product(null, null, "Torta de Piña", pinaDesc, true, 0, new BigDecimal(24500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaPina1, tortaPina2, tortaPina3)), new HashSet<Category>(Arrays.asList(cat1)),
-                col3, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag7, tag8)), null);
+        // torta de chocolate
+        this.genProduct("Torta de Chocolate", TortadeChocolate, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_chocolate_01", "torta_chocolate_02", "torta_chocolate_03", "torta_chocolate_04", "torta_chocolate_05"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conSucralosa)));
 
-        Product tortaChocolate = new Product(null, null, "Torta de Chocolate", chocolateDesc, true, 0, new BigDecimal(34500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaChoco1, tortaChoco2, tortaChoco3)), new HashSet<Category>(Arrays.asList(cat1)),
-                col3, new HashSet<Tag>(Arrays.asList(tag3, tag11, tag7, tag8)), null);
+        // torta de fruta
+        this.genProduct("Torta de Fruta", TortadeFruta, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("fruta_01", "fruta_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product tortaCafe = new Product(null, null, "Torta de Café", cafeDesc, true, 0, new BigDecimal(43500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaCafe1, tortaCafe2)), new HashSet<Category>(Arrays.asList(cat1)),
-                col3, new HashSet<Tag>(Arrays.asList(tag3, tag10, tag7, tag8)), null);
+        // torta de moka
+        this.genProduct("Torta de Moka", TortadeCafé, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_moka_01", "torta_moka_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        // Vanguard
-        Product vangManjarAlmendras = new Product(null, null, "Torta de Manjar y Almendras", vManjarAlmDesc, true, 0, new BigDecimal(19990),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaCafe3, tortaCafe4)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag1, tag3, tag7, tag8, tag9)), null);
 
-        Product vangNaranja = new Product(null, null, "Torta de Naranja", vNaranjaDesc, true, 0, new BigDecimal(24500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaNaranja1)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col4, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag7, tag8)), null);
+        // mousse de frutas / frutilla
+        this.genProduct("Torta Mousse de Frutas", TortadeMousseFrutilla, false, new BigDecimal(19990), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("mousse_frutilla_01"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
 
-        Product vangSanMarcos = new Product(null, null, "Torta San Marcos", vSanMarcosDesc, true, 0, new BigDecimal(34500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaBisBlanco1)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag5, tag7, tag8, tag9)), null);
 
-        Product vangFrutosBosque = new Product(null, null, "Torta Frutos del Bosque", vFrutosDesc, true, 0, new BigDecimal(54500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaBisBlanco2)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag7, tag8)), null);
 
-        Product vangOriente = new Product(null, null, "Torta del Oriente", vOriente, true, 0, new BigDecimal(19990),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaOriente1, tortaOriente2)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag7, tag8, tag9)), null);
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        Product vangLeches = new Product(null, null, "Torta Tres Leches", vLechesDesc, true, 0, new BigDecimal(24500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaLeche1, tortaLeche2)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag5, tag7, tag8)), null);
+        // VANGUARDIA
 
-        Product vangSachertote = new Product(null, null, "Torta Sachertote", vSachertote, true, 0, new BigDecimal(34500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(sachertote1, sachertote2)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col1, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag6, tag7, tag8)), null);
+        // torta san marcos
+//        this.genProduct("Torta San Marcos", TortaSanMarcos, false, new BigDecimal(21500), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList("mousse_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-        Product vangHojasManjar = new Product(null, null, "Torta Hojarasca de Manjar", vHojasManjar, true, 0, new BigDecimal(54500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(tortaMilHojas1, tortaMilHojas2)), new HashSet<Category>(Arrays.asList(cat1, cat3)),
-                col4, new HashSet<Tag>(Arrays.asList(tag1, tag4, tag8)), null);
+        // torta manjar almendras
+//        this.genProduct("Torta de Manjar y Almendras", TortaHojarascaManjar, false, new BigDecimal(21500), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList("torta_mousse_05"))), new HashSet<Category>(Arrays.asList(tradicionales)), fechas, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLactosa)));
 
-        // coctel
-        Product cPasteles = new Product(null, null, "Pasteles de Coctel", pastelDesc, true, 0, new BigDecimal(34900),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(brownie1, brownie2)), new HashSet<Category>(Arrays.asList(cat4, cat6, cat5)),
-                col4, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), null);
+        // torta de naranja
+        this.genProduct("Torta de Naranja", TortadeNaranja, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_naranja_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-//        Product cEmpanadas = new Product(null, null, "Empanadas Surtidas", empanadaDesc, true, 0, new BigDecimal(43500),
-//                false, null, null, null, true, null, null,
-//                null, new HashSet<Image>(Arrays.asList(image6)), new HashSet<Category>(Arrays.asList(cat4, cat6)),
-//                col2, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), null);
+        // torta frutos del bosque
+        this.genProduct("Torta Frutos del Bosque", TortaFrutosdelBosque, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("frutos_del_bosque_01", "frutos_del_bosque_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-        Product cdelicias = new Product(null, null, "Delicias de Coctel", deliciasDesc, true, 0, new BigDecimal(33500),
-                false, null, null, null, true, null, null,
-                null, new HashSet<Image>(Arrays.asList(huevoPascua1, huevoPascua2, huevoPascua3)), new HashSet<Category>(Arrays.asList(cat4, cat6)),
-                col4, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), null);
+        // torta oriente
+        this.genProduct("Torta Oriente", TortaOriente, false, new BigDecimal(22500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_oriente_01", "torta_oriente_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-        // Masas
-//        Product mPanPascuas = new Product(null, null, "Pan de Pascuas", pascuasDesc, true, 0, new BigDecimal(4900),
-//                false, null, null, null, true, null, null,
-//                null, new HashSet<Image>(Arrays.asList(image6)), new HashSet<Category>(Arrays.asList(cat6)),
-//                col2, new HashSet<Tag>(Arrays.asList(tag1, tag2, tag3)), null);
+        // torta tres leches
+        this.genProduct("Torta Tres Leches", TortaTresLeches, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_tres_leches_01", "torta_tres_leches_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinGluten)));
 
-        productService.save(tortaHojarasca);
-        productService.save(alfajores);
-        productService.save(tortaRosa);
-        productService.save(tortaSelvaNegra);
-        productService.save(tortaLucuma);
-        productService.save(tortaFruta);
-        productService.save(tortaMousseFrutilla);
-        productService.save(tortaManjar);
-        productService.save(tortaPina);
-        productService.save(tortaChocolate);
-        productService.save(tortaCafe);
+        // sachertorte
+        this.genProduct("Torta Sachertorte", TortaSachertorte, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("sachertorte_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-        productService.save(vangManjarAlmendras);
-        productService.save(vangNaranja);
-        productService.save(vangSanMarcos);
-        productService.save(vangFrutosBosque);
-        productService.save(vangOriente);
-        productService.save(vangLeches);
-        productService.save(vangSachertote);
-        productService.save(vangHojasManjar);
+        // torta hojarasca manjar
+        this.genProduct("Torta Hojarasca Manjar", TortaHojarascaManjar, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_hojarasca_manjar_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
 
-        productService.save(cPasteles);
-//        productService.save(cEmpanadas);
-        productService.save(cdelicias);
-//        productService.save(mPanPascuas);
-        // -------------------------------------------------------------------------------------------------------------
+        // torta manjar chocolate
+        this.genProduct("Torta de Manjar Chocolate", TortaManjarChocolate, false, new BigDecimal(21500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_manjar_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+
+        // torta matcha
+        this.genProduct("Torta Matcha", TortaMatcha, false, new BigDecimal(22500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("torta_matcha_01", "torta_matcha_02", "torta_matcha_03"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // COCTEL
+
+        // cupcakes tradicionales
+        this.genProduct("Cupcakes Tradicionáles", CupcakesTradicionales, false, new BigDecimal(1500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("cupcake_tradicional_01", "cupcake_tradicional_02", "cupcake_tradicional_03"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // cupcakes con diseño
+        this.genProduct("Cupcakes con Diseño", CupcakesDiseno, false, new BigDecimal(1800), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("cupcake_diseno_01", "cupcake_diseno_02", "cupcake_diseno_03", "cupcake_diseno_04", "cupcake_diseno_05", "cupcake_diseno_06"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // pasteles surtidos
+        this.genProduct("Pastelitos Surtidos", PastelesSurtidos, false, new BigDecimal(35500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("pastelitos_surtidos_01", "pastelitos_surtidos_02", "pastelitos_surtidos_03", "pastelitos_surtidos_04"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // empanadas surtidas
+        this.genProduct("Empanaditas Surtidas", EmpanaditasSurtidas, false, new BigDecimal(35500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("empanadas_01"))), new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // canapes surtidos
+        this.genProduct("Canapes Surtidos", CanapesSurtidos, false, new BigDecimal(34900), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("canapes_01", "canapes_02"))),
+                new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // tapaditos
+        this.genProduct("Tapaditos", Tapaditos, false, new BigDecimal(34500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("tapaditos_01", "tapaditos_02"))), new HashSet<Category>(Arrays.asList(coctel)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // pizzetas
+//        this.genProduct("Pizzetas", Pizzetas, false, new BigDecimal(32500), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList("coctel_06"))), new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // canoas
+//        this.genProduct("Canoas", Canoas, false, new BigDecimal(32500), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList("coctel_07"))), new HashSet<Category>(Arrays.asList(coctel)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // tacitas de chocolate
+        this.genProduct("Tacitas de Chocolate", TacitasdeChocolate, false, new BigDecimal(35500), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("tasitas_chocolate_01", "tasitas_chocolate_02"))), new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // DULCES
+
+        // alfajores
+        this.genProduct("Alfajores", AlfajoresdeManjaryChocolate, false, new BigDecimal(9800), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("alfajores_01", "alfajores_02"))), new HashSet<Category>(Arrays.asList(dulces)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinLactosa, conStevia)));
+
+        // kuchen de frutas
+        this.genProduct("Kuchen de Frutas", KuchenFrutas, false, new BigDecimal(17900), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("kuchen_arandano_01", "kuchen_manzana_01"))), new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+
+        // tartaletas de frutas
+        this.genProduct("Tartaletas de Frutas de Temporada", TartaletaFrutas, false, new BigDecimal(17900), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("tartaleta_01", "tartaleta_02", "tartaleta_03", "tartaleta_04", "tartaleta_05", "tartaleta_06"))),
+                new HashSet<Category>(Arrays.asList(dulces)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+
+        // pie de limon
+        this.genProduct("Pie de Limon", PieLimon, false, new BigDecimal(17900), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("pie_limon_01"))), new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+
+        // mousse de frutas
+//        this.genProduct("Mousse de Frutas", TortadeMousseFrutilla, false, new BigDecimal(17900), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList(""))), new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+
+        // brazo de reina
+//        this.genProduct("Brazos de Reina", PastelesBrazosdeReina, false, new BigDecimal(35500), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList(""))), new HashSet<Category>(Arrays.asList(coctel)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // PANES
+
+        // pan de molde semilla
+        this.genProduct("Pan de Molde", PanMolde, false, new BigDecimal(3300), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("pan_molde_01", "pan_molde_02"))),
+                new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // linaza
+        this.genProduct("Pan de Molde de Linaza", PanLinaza, false, new BigDecimal(3800), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("pan_linaza_01"))), new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // almendra
+        this.genProduct("Pan de Molde de Almendra", PanAlmendras, false, new BigDecimal(1800), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("pan_almendra_01"))), new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // MASAS
+
+        // empanadas
+        this.genProduct("Empanadas", Empanadas, false, new BigDecimal(2300), this.searchImage(listImages,
+                new ArrayList<>(Arrays.asList("empanadas_01", "empanadas_02", "empanadas_03"))),
+                new HashSet<Category>(Arrays.asList(masas)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // pan de pascuas
+//        this.genProduct("Pan de Pascuas", PandePascuas, false, new BigDecimal(4900), this.searchImage(listImages,
+//                new ArrayList<>(Arrays.asList(""))), new HashSet<Category>(Arrays.asList(masas)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     }
+
+
+    private List<Image> genImages(List<String> listImages){
+        String rootDir = "assets/dulcelia-demo/products/";
+        String imgExt = ".jpg";
+        List<Image> listEntities = new ArrayList<>();
+        for (String imgName : listImages){
+            Image newImage = imageService.save(new Image(null, imgName, rootDir + imgName + imgExt, null, null, null));
+            listEntities.add(newImage);
+        }
+        return listEntities;
+    }
+
+    private HashSet<Image> searchImage(List<Image> listImages, List<String> listNames){
+        HashSet<Image> setImages = new HashSet<>();
+        for (Image image : listImages){
+            for (String name : listNames){
+                if(image.getAlt().equals(name)){
+                    setImages.add(image);
+                }
+            }
+        }
+        return setImages;
+    }
+
+    private void genProduct(String title, String desc, boolean isNew, BigDecimal price, HashSet<Image> images, HashSet<Category> categories, Collection collection, HashSet<Tag> tags){
+        productService.save(new Product(null, null, title, desc, isNew, 0, price, false, null, null, null,
+                true, null, null, null, images, categories, collection, tags,null));
+    }
+
 }
