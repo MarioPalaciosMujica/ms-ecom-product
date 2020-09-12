@@ -23,9 +23,6 @@ public class Catalogue {
     @Size(min = 2, max = 50, message = "name size not valid")
     private String catalogueName;
 
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
-
     @Column(name = "created", nullable = false)
     private Date created;
 
@@ -50,14 +47,6 @@ public class Catalogue {
 
     public void setCatalogueName(String catalogueName) {
         this.catalogueName = catalogueName;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
     }
 
     public Date getCreated() {

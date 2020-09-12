@@ -14,9 +14,6 @@ public class CatalogueModel {
     @JsonProperty("catalogueName")
     private String catalogueName;
 
-    @JsonProperty("isActive")
-    private boolean isActive;
-
     @JsonProperty("created")
     private String created;
 

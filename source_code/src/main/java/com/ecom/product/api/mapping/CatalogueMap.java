@@ -19,7 +19,6 @@ public class CatalogueMap {
             CatalogueModel model = new CatalogueModel();
             model.setIdCatalogue(entity.getIdCatalogue());
             model.setCatalogueName(entity.getCatalogueName());
-            model.setActive(entity.isActive());
             model.setCreated(dateFormat.dateToString(entity.getCreated()));
             model.setModified(dateFormat.dateToString(entity.getModified()));
             return model;
@@ -34,7 +33,6 @@ public class CatalogueMap {
             Catalogue entity = new Catalogue();
             entity.setIdCatalogue(model.getIdCatalogue());
             entity.setCatalogueName(model.getCatalogueName());
-            model.setActive(model.isActive());
             entity.setCreated(dateFormat.stringToDate(model.getCreated()));
             entity.setModified(dateFormat.stringToDate(model.getModified()));
             return entity;
