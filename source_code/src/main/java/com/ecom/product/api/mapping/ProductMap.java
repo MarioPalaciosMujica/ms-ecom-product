@@ -2,6 +2,7 @@ package com.ecom.product.api.mapping;
 
 import com.ecom.product.api.models.ProductModel;
 import com.ecom.product.dalc.entities.Product;
+import com.ecom.product.tools.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,8 @@ public class ProductMap {
     @Autowired private TagMap tagMap;
     @Autowired private CollectionMap collectionMap;
     @Autowired private MaterialMap materialMap;
+    @Autowired private VariantMap variantMap;
+    @Autowired private DateFormat dateFormat;
 
     public ProductModel toModel(Product entity){
         if(entity != null){
@@ -26,26 +29,20 @@ public class ProductMap {
             model.setTitle(entity.getTitle());
             model.setDescription(entity.getDescription());
             model.setRating(entity.getRating());
-            model.setPrice(entity.getPrice());
-
             model.setNew(entity.isNew());
             model.setSale(entity.isSale());
             model.setDiscountPercentage(entity.getDiscountPercentage());
-            model.setPriceDiscount(entity.getPriceDiscount());
             model.setStock(entity.getStock());
-
             model.setActive(entity.isActive());
-            model.setCreated(entity.getCreated());
-            model.setModified(entity.getModified());
-//            model.setImage(this.imageMap.toModel(entity.getImage()));
+            model.setCreated(dateFormat.dateToString(entity.getCreated()));
+            model.setModified(dateFormat.dateToString(entity.getModified()));
             model.setBrand(this.brandMap.toModel(entity.getBrand()));
-
             model.setCollection(this.collectionMap.toModel(entity.getCollection()));
             model.setImages(this.imageMap.toModelList(new ArrayList<>(entity.getImages())));
-
             model.setCategories(this.categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
             model.setTags(this.tagMap.toModelList(new ArrayList<>(entity.getTags())));
             model.setMaterials(this.materialMap.toModelList(new ArrayList<>(entity.getMaterials())));
+            model.setVariants(variantMap.toModelList(new ArrayList<>(entity.getVariants())));
             return model;
         }
         else{
@@ -60,26 +57,20 @@ public class ProductMap {
             entity.setTitle(model.getTitle());
             entity.setDescription(model.getDescription());
             entity.setRating(model.getRating());
-            entity.setPrice(model.getPrice());
-
             entity.setNew(model.isNew());
             entity.setSale(model.isSale());
             entity.setDiscountPercentage(model.getDiscountPercentage());
-            entity.setPriceDiscount(model.getPriceDiscount());
             entity.setStock(model.getStock());
-
             entity.setActive(model.isActive());
-            entity.setCreated(model.getCreated());
-            entity.setModified(model.getModified());
-//            entity.setImage(this.imageMap.toEntity(model.getImage()));
-            entity.setBrand(this.brandMap.toEntity(model.getBrand()));
-
-            entity.setCollection(this.collectionMap.toEntity(model.getCollection()));
-            entity.setImages(new HashSet<>(this.imageMap.toEntityList(model.getImages())));
-
-            entity.setCategories(new HashSet<>(this.categoryMap.toEntityList(model.getCategories())));
-            entity.setTags(new HashSet<>(this.tagMap.toEntityList(model.getTags())));
-            entity.setMaterials(new HashSet<>(this.materialMap.toEntityList(model.getMaterials())));
+            entity.setCreated(dateFormat.stringToDate(model.getCreated()));
+            entity.setModified(dateFormat.stringToDate(model.getModified()));
+            entity.setBrand(brandMap.toEntity(model.getBrand()));
+            entity.setCollection(collectionMap.toEntity(model.getCollection()));
+            entity.setImages(new HashSet<>(imageMap.toEntityList(model.getImages())));
+            entity.setCategories(new HashSet<>(categoryMap.toEntityList(model.getCategories())));
+            entity.setTags(new HashSet<>(tagMap.toEntityList(model.getTags())));
+            entity.setMaterials(new HashSet<>(materialMap.toEntityList(model.getMaterials())));
+            entity.setVariants(new HashSet<>(variantMap.toEntityList(model.getVariants())));
             return entity;
         }
         else{

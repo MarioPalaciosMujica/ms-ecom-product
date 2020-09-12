@@ -6,13 +6,16 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CollectionModel {
+public class CatalogueModel {
 
-    @JsonProperty("idCollection")
-    private Long idCollection;
+    @JsonProperty("idCatalogue")
+    private Long idCatalogue;
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("catalogueName")
+    private String catalogueName;
+
+    @JsonProperty("isActive")
+    private boolean isActive;
 
     @JsonProperty("created")
     private String created;

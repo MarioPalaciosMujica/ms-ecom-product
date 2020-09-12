@@ -38,8 +38,8 @@ public class Product {
     @Column(name = "rating")
     private Integer rating;
 
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
+//    @Column(name = "price", nullable = false)
+//    private BigDecimal price;
 
     @Column(name = "isSale", nullable = false)
     private boolean isSale;
@@ -47,8 +47,8 @@ public class Product {
     @Column(name = "discount_percentage")
     private BigDecimal discountPercentage;
 
-    @Column(name = "price_discount")
-    private BigDecimal priceDiscount;
+//    @Column(name = "price_discount")
+//    private BigDecimal priceDiscount;
 
     @Column(name = "stock")
     private Integer stock;
@@ -61,10 +61,6 @@ public class Product {
 
     @Column(name = "modified")
     private Date modified;
-
-//    @OneToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "id_image")
-//    private Image image;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_brand")
@@ -105,6 +101,10 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "id_material")
     )
     private Set<Material> materials;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private Set<Variant> variants;
+
 
 
     public Long getIdProduct() {
@@ -155,13 +155,13 @@ public class Product {
         this.rating = rating;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+//    public BigDecimal getPrice() {
+//        return price;
+//    }
+//
+//    public void setPrice(BigDecimal price) {
+//        this.price = price;
+//    }
 
     public boolean isSale() {
         return isSale;
@@ -179,13 +179,13 @@ public class Product {
         this.discountPercentage = discountPercentage;
     }
 
-    public BigDecimal getPriceDiscount() {
-        return priceDiscount;
-    }
-
-    public void setPriceDiscount(BigDecimal priceDiscount) {
-        this.priceDiscount = priceDiscount;
-    }
+//    public BigDecimal getPriceDiscount() {
+//        return priceDiscount;
+//    }
+//
+//    public void setPriceDiscount(BigDecimal priceDiscount) {
+//        this.priceDiscount = priceDiscount;
+//    }
 
     public Integer getStock() {
         return stock;
@@ -218,14 +218,6 @@ public class Product {
     public void setModified(Date modified) {
         this.modified = modified;
     }
-
-//    public Image getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(Image image) {
-//        this.image = image;
-//    }
 
     public Brand getBrand() {
         return brand;
@@ -273,5 +265,13 @@ public class Product {
 
     public void setMaterials(Set<Material> materials) {
         this.materials = materials;
+    }
+
+    public Set<Variant> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(Set<Variant> variants) {
+        this.variants = variants;
     }
 }

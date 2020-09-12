@@ -37,7 +37,11 @@ public class Category {
     )
     private Set<Product> products;
 
-    // GETTERS AND SETTERS
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_catalogue")
+    private Catalogue catalogue;
+
+
 
     public Long getIdCategory() {
         return idCategory;
@@ -77,5 +81,13 @@ public class Category {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Catalogue getCatalogue() {
+        return catalogue;
+    }
+
+    public void setCatalogue(Catalogue catalogue) {
+        this.catalogue = catalogue;
     }
 }

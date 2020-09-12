@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 public class CategoryModel {
@@ -17,8 +15,12 @@ public class CategoryModel {
     private String name;
 
     @JsonProperty("created")
-    private Date created;
+    private String created;
 
     @JsonProperty("modified")
-    private Date modified;
+    private String modified;
+
+    @JsonProperty("catalogue")
+    private CatalogueModel catalogue;
+
 }

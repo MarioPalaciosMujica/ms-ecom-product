@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -30,8 +29,8 @@ public class ProductModel {
     @JsonProperty("rating")
     private Integer rating;
 
-    @JsonProperty("price")
-    private BigDecimal price;
+//    @JsonProperty("price")
+//    private BigDecimal price;
 
     @JsonProperty("isSale")
     private boolean isSale;
@@ -39,8 +38,8 @@ public class ProductModel {
     @JsonProperty("discountPercentage")
     private BigDecimal discountPercentage;
 
-    @JsonProperty("priceDiscount")
-    private BigDecimal priceDiscount;
+//    @JsonProperty("priceDiscount")
+//    private BigDecimal priceDiscount;
 
     @JsonProperty("stock")
     private Integer stock;
@@ -49,13 +48,10 @@ public class ProductModel {
     private boolean isActive;
 
     @JsonProperty("created")
-    private Date created;
+    private String created;
 
     @JsonProperty("modified")
-    private Date modified;
-
-//    @JsonProperty("image")
-//    private ImageModel image;
+    private String modified;
 
     @JsonProperty("brand")
     private BrandModel brand;
@@ -74,5 +70,8 @@ public class ProductModel {
 
     @JsonProperty("materials")
     private List<MaterialModel> materials;
+
+    @JsonProperty("variants")
+    private List<VariantModel> variants;
 
 }

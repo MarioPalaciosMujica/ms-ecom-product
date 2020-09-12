@@ -40,4 +40,5 @@ public class BrandController {
     public void deleteById(@PathVariable @NotNull Long id){
         brandService.deleteById(id);
     }
+
 }
