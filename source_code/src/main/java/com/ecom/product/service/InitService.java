@@ -416,6 +416,7 @@ public class InitService {
         return setImages;
     }
 
+    //TODO: update this method
     private void genProduct(String title, String desc, boolean isNew, BigDecimal price, HashSet<Image> images, HashSet<Category> categories, Collection collection, HashSet<Tag> tags){
         productService.save(new Product(null, null, title, desc, isNew, 0, price, false, null, null, null,
                 true, null, null, null, images, categories, collection, tags,null));

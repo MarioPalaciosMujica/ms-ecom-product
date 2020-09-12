@@ -2,6 +2,7 @@ package com.ecom.product.api.resources;
 
 import com.ecom.product.api.mapping.OptionMap;
 import com.ecom.product.api.models.OptionModel;
+import com.ecom.product.service.OptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

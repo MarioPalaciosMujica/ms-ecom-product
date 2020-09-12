@@ -2,6 +2,7 @@ package com.ecom.product.api.resources;
 
 import com.ecom.product.api.mapping.CatalogueMap;
 import com.ecom.product.api.models.CatalogueModel;
+import com.ecom.product.service.CatalogueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,6 +2,7 @@ package com.ecom.product.api.resources;
 
 import com.ecom.product.api.mapping.UnitNumberMap;
 import com.ecom.product.api.models.UnitNumberModel;
+import com.ecom.product.service.UnitNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

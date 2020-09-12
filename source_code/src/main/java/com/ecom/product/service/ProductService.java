@@ -1,8 +1,8 @@
 package com.ecom.product.service;
 
-import com.ecom.product.dalc.entities.Collection;
 import com.ecom.product.dalc.entities.Product;
 import com.ecom.product.dalc.entities.Tag;
+import com.ecom.product.dalc.entities.Variant;
 import com.ecom.product.dalc.repositories.IProductRepository;
 import com.ecom.product.tools.CurrencyCLP;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,14 @@ public class ProductService {
 
     @Autowired private IProductRepository productRepository;
     @Autowired private CollectionService collectionService;
+    @Autowired private VariantService variantService;
     @Autowired private CurrencyCLP currencyCLP;
 
     public Product save(@NotNull Product entity){
         entity.setIdProduct(null);
-        entity.setPrice(currencyCLP.roundClp(entity.getPrice()));
+        for (Variant variant : entity.getVariants()){
+            variant.setBasePriceAmount(currencyCLP.roundClp(variant.getBasePriceAmount()));
+        }
         this.isProductSale(entity);
         entity.setNew(true);
         entity.setRating(0);
@@ -246,12 +249,19 @@ public class ProductService {
     private void isProductSale(Product product){
         if(product.getDiscountPercentage() != null && product.getDiscountPercentage().compareTo(new BigDecimal(0)) == 1){
             product.setSale(true);
-            product.setPriceDiscount(currencyCLP.applyDiscount(product.getPrice(), product.getDiscountPercentage()));
+            //product.setPriceDiscount(currencyCLP.applyDiscount(product.getPrice(), product.getDiscountPercentage()));
+            for (Variant variant : product.getVariants()){
+                variant.setTotalPriceAmount(currencyCLP.applyDiscount(variant.getBasePriceAmount(), product.getDiscountPercentage()));
+            }
         }
         else{
             product.setSale(false);
             product.setDiscountPercentage(null);
-            product.setPriceDiscount(null);
+            for (Variant variant : product.getVariants()){
+                variant.setTotalPriceAmount(variant.getBasePriceAmount());
+            }
         }
     }
+
+
 }
