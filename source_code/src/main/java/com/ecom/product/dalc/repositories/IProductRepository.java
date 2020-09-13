@@ -81,4 +81,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
 //    @Query("select p from Product p where p.price >= :minPrice and p.price <= :maxPrice and p.isActive = true order by p.price desc")
 //    List<Product> findAllActivesByPriceRange(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice);
 
+    // TODO: find all products from a catalogue
+    // TODO: find all products actives from a catalogue
+
 }

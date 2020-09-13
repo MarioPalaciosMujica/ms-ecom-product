@@ -16,6 +16,8 @@ public class InitService {
     @Autowired private ImageService imageService;
     @Autowired private ProductService productService;
     @Autowired private CollectionService collectionService;
+    @Autowired private OptionService optionService;
+    @Autowired private CatalogueService catalogueService;
 
     public void start(){
 
@@ -24,10 +26,17 @@ public class InitService {
         Option OptSinLactosa = new Option(null, "Sin Lactosa", new BigDecimal(4), null, null);
         Option OptSinGluten = new Option(null, "Sin Gluten", new BigDecimal(5), null, null);
         Option OptSinLeche = new Option(null, "Sin Leche", new BigDecimal(6), null, null);
+        OptSinAzucar = optionService.save(OptSinAzucar);
+        OptSinLactosa = optionService.save(OptSinLactosa);
+        OptSinGluten = optionService.save(OptSinGluten);
+        OptSinLeche = optionService.save(OptSinLeche);
+
 
         // Catalogues
         Catalogue catalogTortas = new Catalogue(null, "Dulcelia Tortas", new Date(), null, null);
         Catalogue catalogEmporio = new Catalogue(null, "Dulcelia Emporio", new Date(), null, null);
+        catalogTortas = catalogueService.save(catalogTortas);
+        catalogEmporio = catalogueService.save(catalogEmporio);
 
         // Categories:
         Category tradicionales = new Category(null, "Tortas Tradicionáles", new Date(), null, null, catalogTortas);
@@ -240,10 +249,10 @@ public class InitService {
                 new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
                 new HashSet<Variant>(Arrays.asList(
                         this.genVariant(new BigDecimal(19990), null, 16, true),
-                        this.genVariant(new BigDecimal(24500), null, 20, true),
-                        this.genVariant(new BigDecimal(34500), null, 30, true),
-                        this.genVariant(new BigDecimal(43500), null, 40, true),
-                        this.genVariant(new BigDecimal(54500), null, 50, true)
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
                     )
                 )
         );

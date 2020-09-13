@@ -19,7 +19,7 @@ public class Variant {
     @Column(name = "id_variant", updatable = false, nullable = false, unique = true)
     private Long idVariant;
 
-    @Column(name = "sku", nullable = false)
+    @Column(name = "sku")
     private Long sku;
 
     @Column(name = "base_price_amount", nullable = false)
@@ -46,7 +46,7 @@ public class Variant {
     @Column(name = "modified")
     private Date modified;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_product")
     private Product product;
 

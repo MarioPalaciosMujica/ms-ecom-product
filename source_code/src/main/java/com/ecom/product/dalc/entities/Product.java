@@ -91,7 +91,7 @@ public class Product {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     private Set<ProductMaterial> productMaterials;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Variant> variants;
 
     @ManyToMany(fetch = FetchType.LAZY)
