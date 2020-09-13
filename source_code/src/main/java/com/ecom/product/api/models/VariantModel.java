@@ -23,6 +23,15 @@ public class VariantModel {
     @JsonProperty("totalPriceAmount")
     private BigDecimal totalPriceAmount;
 
+    @JsonProperty("unitQuantity")
+    private Integer unitQuantity;
+
+    @JsonProperty("clientsCapacity")
+    private Integer clientsCapacity;
+
+    @JsonProperty("isDefault")
+    private boolean isDefault;
+
     @JsonProperty("isSelected")
     private boolean isSelected;
 
@@ -31,12 +40,6 @@ public class VariantModel {
 
     @JsonProperty("modified")
     private String modified;
-
-    @JsonProperty("product")
-    private ProductModel product;
-
-    @JsonProperty("unitNumbers")
-    private List<UnitNumberModel> unitNumbers;
 
     @JsonProperty("options")
     private List<OptionModel> options;

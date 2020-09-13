@@ -38,17 +38,11 @@ public class Product {
     @Column(name = "rating")
     private Integer rating;
 
-//    @Column(name = "price", nullable = false)
-//    private BigDecimal price;
-
     @Column(name = "isSale", nullable = false)
     private boolean isSale;
 
     @Column(name = "discount_percentage")
     private BigDecimal discountPercentage;
-
-//    @Column(name = "price_discount")
-//    private BigDecimal priceDiscount;
 
     @Column(name = "stock")
     private Integer stock;
@@ -94,17 +88,19 @@ public class Product {
     )
     private Set<Tag> tags;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "tbr_products_materials",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_material")
-    )
-    private Set<Material> materials;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private Set<ProductMaterial> productMaterials;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     private Set<Variant> variants;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tbr_products_options",
+            joinColumns = @JoinColumn(name = "id_product"),
+            inverseJoinColumns = @JoinColumn(name = "id_option")
+    )
+    private Set<Option> options;
 
 
     public Long getIdProduct() {
@@ -155,14 +151,6 @@ public class Product {
         this.rating = rating;
     }
 
-//    public BigDecimal getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(BigDecimal price) {
-//        this.price = price;
-//    }
-
     public boolean isSale() {
         return isSale;
     }
@@ -178,14 +166,6 @@ public class Product {
     public void setDiscountPercentage(BigDecimal discountPercentage) {
         this.discountPercentage = discountPercentage;
     }
-
-//    public BigDecimal getPriceDiscount() {
-//        return priceDiscount;
-//    }
-//
-//    public void setPriceDiscount(BigDecimal priceDiscount) {
-//        this.priceDiscount = priceDiscount;
-//    }
 
     public Integer getStock() {
         return stock;
@@ -259,12 +239,12 @@ public class Product {
         this.tags = tags;
     }
 
-    public Set<Material> getMaterials() {
-        return materials;
+    public Set<ProductMaterial> getProductMaterials() {
+        return productMaterials;
     }
 
-    public void setMaterials(Set<Material> materials) {
-        this.materials = materials;
+    public void setProductMaterials(Set<ProductMaterial> productMaterials) {
+        this.productMaterials = productMaterials;
     }
 
     public Set<Variant> getVariants() {
@@ -273,5 +253,13 @@ public class Product {
 
     public void setVariants(Set<Variant> variants) {
         this.variants = variants;
+    }
+
+    public Set<Option> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Set<Option> options) {
+        this.options = options;
     }
 }

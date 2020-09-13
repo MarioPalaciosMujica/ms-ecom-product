@@ -28,6 +28,15 @@ public class Variant {
     @Column(name = "total_price_amount", nullable = false)
     private BigDecimal totalPriceAmount;
 
+    @Column(name = "unit_quantity")
+    private Integer unitQuantity;
+
+    @Column(name = "clients_capacity")
+    private Integer clientsCapacity;
+
+    @Column(name = "is_default", nullable = false)
+    private boolean isDefault;
+
     @Column(name = "is_selected", nullable = false)
     private boolean isSelected;
 
@@ -41,13 +50,6 @@ public class Variant {
     @JoinColumn(name = "id_product")
     private Product product;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "tbr_variants_units",
-            joinColumns = @JoinColumn(name = "id_variant"),
-            inverseJoinColumns = @JoinColumn(name = "id_units_number")
-    )
-    private Set<UnitNumber> unitNumbers;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -91,6 +93,30 @@ public class Variant {
         this.totalPriceAmount = totalPriceAmount;
     }
 
+    public Integer getUnitQuantity() {
+        return unitQuantity;
+    }
+
+    public void setUnitQuantity(Integer unitQuantity) {
+        this.unitQuantity = unitQuantity;
+    }
+
+    public Integer getClientsCapacity() {
+        return clientsCapacity;
+    }
+
+    public void setClientsCapacity(Integer clientsCapacity) {
+        this.clientsCapacity = clientsCapacity;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
+    }
+
     public boolean isSelected() {
         return isSelected;
     }
@@ -121,14 +147,6 @@ public class Variant {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Set<UnitNumber> getUnitNumbers() {
-        return unitNumbers;
-    }
-
-    public void setUnitNumbers(Set<UnitNumber> unitNumbers) {
-        this.unitNumbers = unitNumbers;
     }
 
     public Set<Option> getOptions() {

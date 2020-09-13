@@ -217,9 +217,9 @@ public class ProductService {
         return productRepository.findAllActivesByTitle(partialTitle.trim().toLowerCase());
     }
 
-    public List<Product> findAllActivesByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
-        return productRepository.findAllActivesByPriceRange(minPrice, maxPrice);
-    }
+//    public List<Product> findAllActivesByPriceRange(@NotNull BigDecimal minPrice, @NotNull BigDecimal maxPrice){
+//        return productRepository.findAllActivesByPriceRange(minPrice, maxPrice);
+//    }
 
 
 

@@ -18,8 +18,9 @@ public class ProductMap {
     @Autowired private BrandMap brandMap;
     @Autowired private TagMap tagMap;
     @Autowired private CollectionMap collectionMap;
-    @Autowired private MaterialMap materialMap;
     @Autowired private VariantMap variantMap;
+    @Autowired private OptionMap optionMap;
+    @Autowired private ProductMaterialMap productMaterialMap;
     @Autowired private DateFormat dateFormat;
 
     public ProductModel toModel(Product entity){
@@ -36,12 +37,13 @@ public class ProductMap {
             model.setActive(entity.isActive());
             model.setCreated(dateFormat.dateToString(entity.getCreated()));
             model.setModified(dateFormat.dateToString(entity.getModified()));
-            model.setBrand(this.brandMap.toModel(entity.getBrand()));
-            model.setCollection(this.collectionMap.toModel(entity.getCollection()));
-            model.setImages(this.imageMap.toModelList(new ArrayList<>(entity.getImages())));
-            model.setCategories(this.categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
-            model.setTags(this.tagMap.toModelList(new ArrayList<>(entity.getTags())));
-            model.setMaterials(this.materialMap.toModelList(new ArrayList<>(entity.getMaterials())));
+            model.setBrand(brandMap.toModel(entity.getBrand()));
+            model.setCollection(collectionMap.toModel(entity.getCollection()));
+            model.setImages(imageMap.toModelList(new ArrayList<>(entity.getImages())));
+            model.setCategories(categoryMap.toModelList(new ArrayList<>(entity.getCategories())));
+            model.setTags(tagMap.toModelList(new ArrayList<>(entity.getTags())));
+            model.setProductMaterials(productMaterialMap.toModelList(new ArrayList<>(entity.getProductMaterials())));
+            model.setOptions(optionMap.toModelList(new ArrayList<>(entity.getOptions())));
             model.setVariants(variantMap.toModelList(new ArrayList<>(entity.getVariants())));
             return model;
         }
@@ -69,8 +71,9 @@ public class ProductMap {
             entity.setImages(new HashSet<>(imageMap.toEntityList(model.getImages())));
             entity.setCategories(new HashSet<>(categoryMap.toEntityList(model.getCategories())));
             entity.setTags(new HashSet<>(tagMap.toEntityList(model.getTags())));
-            entity.setMaterials(new HashSet<>(materialMap.toEntityList(model.getMaterials())));
+            entity.setOptions(new HashSet<>(optionMap.toEntityList(model.getOptions())));
             entity.setVariants(new HashSet<>(variantMap.toEntityList(model.getVariants())));
+            entity.setProductMaterials(new HashSet<>(productMaterialMap.toEntityList(model.getProductMaterials())));
             return entity;
         }
         else{

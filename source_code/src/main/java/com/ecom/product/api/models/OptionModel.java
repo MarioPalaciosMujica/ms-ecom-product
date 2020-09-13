@@ -12,6 +12,6 @@ public class OptionModel {
     private Long idOption;
 
     @JsonProperty("optionName")
-    private int optionName;
+    private String optionName;
 
 }

@@ -167,10 +167,10 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesByTitle(partialTitle));
     }
 
-    @RequestMapping(value = "/findAllActivesByPriceRange/{minPrice}/{maxPrice}", method = RequestMethod.GET)
-    public List<ProductModel> findAllActivesByPriceRange(@PathVariable @NotNull BigDecimal minPrice, @PathVariable @NotNull BigDecimal maxPrice){
-        return productMap.toModelList(productService.findAllActivesByPriceRange(minPrice, maxPrice));
-    }
+//    @RequestMapping(value = "/findAllActivesByPriceRange/{minPrice}/{maxPrice}", method = RequestMethod.GET)
+//    public List<ProductModel> findAllActivesByPriceRange(@PathVariable @NotNull BigDecimal minPrice, @PathVariable @NotNull BigDecimal maxPrice){
+//        return productMap.toModelList(productService.findAllActivesByPriceRange(minPrice, maxPrice));
+//    }
 
     @RequestMapping(value = "/updateRanking/{id}", method = RequestMethod.PATCH)
     public void updateRanking(@PathVariable @NotNull Long id){

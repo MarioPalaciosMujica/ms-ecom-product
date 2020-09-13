@@ -13,7 +13,6 @@ import java.util.List;
 @Component
 public class VariantMap {
 
-    @Autowired private UnitNumberMap unitNumberMap;
     @Autowired private OptionMap optionMap;
     @Autowired private DateFormat dateFormat;
 
@@ -24,10 +23,12 @@ public class VariantMap {
             model.setSku(entity.getSku());
             model.setBasePriceAmount(entity.getBasePriceAmount());
             model.setTotalPriceAmount(entity.getTotalPriceAmount());
+            model.setUnitQuantity(entity.getUnitQuantity());
+            model.setClientsCapacity(entity.getClientsCapacity());
+            model.setDefault(entity.isDefault());
             model.setSelected(entity.isSelected());
             model.setCreated(dateFormat.dateToString(entity.getCreated()));
             model.setModified(dateFormat.dateToString(entity.getModified()));
-            model.setUnitNumbers(unitNumberMap.toModelList(new ArrayList<>(entity.getUnitNumbers())));
             model.setOptions(optionMap.toModelList(new ArrayList<>(entity.getOptions())));
             return model;
         }
@@ -43,10 +44,12 @@ public class VariantMap {
             entity.setSku(model.getSku());
             entity.setBasePriceAmount(model.getBasePriceAmount());
             entity.setTotalPriceAmount(model.getTotalPriceAmount());
+            entity.setUnitQuantity(model.getUnitQuantity());
+            entity.setClientsCapacity(model.getClientsCapacity());
             entity.setSelected(model.isSelected());
+            entity.setDefault(model.isDefault());
             entity.setCreated(dateFormat.stringToDate(model.getCreated()));
             entity.setModified(dateFormat.stringToDate(model.getModified()));
-            entity.setUnitNumbers(new HashSet<>(unitNumberMap.toEntityList(model.getUnitNumbers())));
             entity.setOptions(new HashSet<>(optionMap.toEntityList(model.getOptions())));
             return entity;
         }

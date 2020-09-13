@@ -29,17 +29,11 @@ public class ProductModel {
     @JsonProperty("rating")
     private Integer rating;
 
-//    @JsonProperty("price")
-//    private BigDecimal price;
-
     @JsonProperty("isSale")
     private boolean isSale;
 
     @JsonProperty("discountPercentage")
     private BigDecimal discountPercentage;
-
-//    @JsonProperty("priceDiscount")
-//    private BigDecimal priceDiscount;
 
     @JsonProperty("stock")
     private Integer stock;
@@ -68,8 +62,11 @@ public class ProductModel {
     @JsonProperty("tags")
     private List<TagModel> tags;
 
-    @JsonProperty("materials")
-    private List<MaterialModel> materials;
+    @JsonProperty("productMaterials")
+    private List<ProductMaterialModel> productMaterials;
+
+    @JsonProperty("optionModels")
+    private List<OptionModel> options;
 
     @JsonProperty("variants")
     private List<VariantModel> variants;

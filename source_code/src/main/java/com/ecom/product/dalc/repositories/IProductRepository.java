@@ -78,7 +78,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p where lower(p.title) like %:partialTitle% and p.isActive = true")
     List<Product> findAllActivesByTitle(@Param("partialTitle") String partialTitle);
 
-    @Query("select p from Product p where p.price >= :minPrice and p.price <= :maxPrice and p.isActive = true order by p.price desc")
-    List<Product> findAllActivesByPriceRange(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice);
+//    @Query("select p from Product p where p.price >= :minPrice and p.price <= :maxPrice and p.isActive = true order by p.price desc")
+//    List<Product> findAllActivesByPriceRange(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice);
 
 }
