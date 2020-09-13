@@ -112,12 +112,12 @@ public class ProductController {
         return productMap.toModelList(productService.findAllActivesNotOnSale());
     }
 
-    @RequestMapping(value = "/findAllByCollection", method = RequestMethod.GET)
+    @RequestMapping(value = "/findAllByCollection/{idCollection}", method = RequestMethod.GET)
     public List<ProductModel> findAllByCollection(@PathVariable @NotNull Long idCollection){
         return productMap.toModelList(productService.findAllByCollection(idCollection));
     }
 
-    @RequestMapping(value = "/findAllActivesByCollection", method = RequestMethod.GET)
+    @RequestMapping(value = "/findAllActivesByCollection/{idCollection}", method = RequestMethod.GET)
     public List<ProductModel> findAllActivesByCollection(@PathVariable @NotNull Long idCollection){
         return productMap.toModelList(productService.findAllActivesByCollection(idCollection));
     }
