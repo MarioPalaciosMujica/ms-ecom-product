@@ -34,9 +34,6 @@ public class Variant {
     @Column(name = "clients_capacity")
     private Integer clientsCapacity;
 
-    @Column(name = "is_default", nullable = false)
-    private boolean isDefault;
-
     @Column(name = "is_selected", nullable = false)
     private boolean isSelected;
 
@@ -49,7 +46,6 @@ public class Variant {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_product")
     private Product product;
-
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -109,14 +105,6 @@ public class Variant {
         this.clientsCapacity = clientsCapacity;
     }
 
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
-    }
-
     public boolean isSelected() {
         return isSelected;
     }
@@ -156,4 +144,5 @@ public class Variant {
     public void setOptions(Set<Option> options) {
         this.options = options;
     }
+
 }

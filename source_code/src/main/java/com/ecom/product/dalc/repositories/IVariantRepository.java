@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface IVariantRepository extends JpaRepository<Variant, Long> {
-
-    @Query("select v from Variant v join v.product p where p.idProduct = :idProduct")
-    List<Variant> findAllByProduct(@Param("idProduct") Long idProduct);
 }

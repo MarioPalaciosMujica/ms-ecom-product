@@ -26,10 +26,12 @@ public class InitService {
         Option OptSinLactosa = new Option(null, "Sin Lactosa", new BigDecimal(4), null, null);
         Option OptSinGluten = new Option(null, "Sin Gluten", new BigDecimal(5), null, null);
         Option OptSinLeche = new Option(null, "Sin Leche", new BigDecimal(6), null, null);
+        Option OptSinSucralosa = new Option(null, "Sin Sucralosa", new BigDecimal(7), null, null);
         OptSinAzucar = optionService.save(OptSinAzucar);
         OptSinLactosa = optionService.save(OptSinLactosa);
         OptSinGluten = optionService.save(OptSinGluten);
         OptSinLeche = optionService.save(OptSinLeche);
+        OptSinSucralosa = optionService.save(OptSinSucralosa);
 
 
         // Catalogues
@@ -218,31 +220,11 @@ public class InitService {
         String Pan = "Sin gluten, sin azucar y sin leche.";
         String Empanadas = "Sin gluten, sin azucar y sin leche.";
 
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // TRADICIONALES
-
-        /*
-        String title,
-        String desc,
-        boolean isNew,
-        boolean isSale,
-        BigDecimal discount,
-        HashSet<Image> images,
-        HashSet<Category> categories,
-        Collection collection,
-        HashSet<Tag> tags,
-        HashSet<Option> options,
-        HashSet<Variant> variants
-
-        OptSinAzucar
-        OptSinLactosa
-        OptSinGluten
-        OptSinLeche
-        */
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // torta rosa
-//        this.genProduct("Torta Rosa", TortaRosa, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_rosa_01", "torta_rosa_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), fechas, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
-
         this.genProduct("Torta Rosa", TortaRosa, false, false, null,
                 this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_rosa_01", "torta_rosa_02"))),
                 new HashSet<Category>(Arrays.asList(tradicionales)), fechas, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
@@ -258,157 +240,414 @@ public class InitService {
         );
 
         // torta selva negra
-//        this.genProduct("Selva Negra", SelvaNegra, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("selva_negra_01", "selva_negra_02", "selva_negra_03"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Selva Negra", SelvaNegra, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("selva_negra_02", "selva_negra_03"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // torta de piña
-//        this.genProduct("Torta de Piña", TortadePina, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_pina_01", "torta_pina_02", "torta_pina_03"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Torta de Piña", TortadePina, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_pina_01", "torta_pina_02", "torta_pina_03"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // torta de lucuma
-//        this.genProduct("Torta de Lúcuma", TortadeLucuma, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_lucuma_01"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Torta de Lúcuma", TortadeLucuma, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_lucuma_01"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // torta de chocolate
-//        this.genProduct("Torta de Chocolate", TortadeChocolate, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_chocolate_01", "torta_chocolate_02", "torta_chocolate_03", "torta_chocolate_04", "torta_chocolate_05"))),
-//                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conSucralosa)));
+        this.genProduct("Torta de Chocolate", TortadeChocolate, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_chocolate_01", "torta_chocolate_02", "torta_chocolate_03", "torta_chocolate_04", "torta_chocolate_05"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conSucralosa)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinSucralosa)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                )
+                )
+        );
 
         // torta de fruta
-//        this.genProduct("Torta de Fruta", TortadeFruta, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("fruta_01", "fruta_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Torta de Fruta", TortadeFruta, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("fruta_01", "fruta_02"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // torta de moka
-//        this.genProduct("Torta de Moka", TortadeCafé, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_moka_01", "torta_moka_02"))), new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
-
+        this.genProduct("Torta de Moka", TortadeCafé, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_moka_01", "torta_moka_02"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), vendidos, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // mousse de frutas / frutilla
-//        this.genProduct("Torta Mousse de Frutas", TortadeMousseFrutilla, false, new BigDecimal(19990), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("mousse_frutilla_01"))), new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Torta Mousse de Frutas", TortadeMousseFrutilla, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("mousse_frutilla_01"))),
+                new HashSet<Category>(Arrays.asList(tradicionales)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(19990), null, 16, true),
+                        this.genVariant(new BigDecimal(24500), null, 20, false),
+                        this.genVariant(new BigDecimal(34500), null, 30, false),
+                        this.genVariant(new BigDecimal(43500), null, 40, false),
+                        this.genVariant(new BigDecimal(54500), null, 50, false)
+                    )
+                )
+        );
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         // VANGUARDIA
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // torta de naranja
-//        this.genProduct("Torta de Naranja", TortadeNaranja, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_naranja_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta de Naranja", TortadeNaranja, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_naranja_01"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta frutos del bosque
-//        this.genProduct("Torta Frutos del Bosque", TortaFrutosdelBosque, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("frutos_del_bosque_01", "frutos_del_bosque_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta Frutos del Bosque", TortaFrutosdelBosque, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("frutos_del_bosque_01", "frutos_del_bosque_02"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta oriente
-//        this.genProduct("Torta Oriente", TortaOriente, false, new BigDecimal(22500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_oriente_01", "torta_oriente_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta Oriente", TortaOriente, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_oriente_01", "torta_oriente_02"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(22500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta tres leches
-//        this.genProduct("Torta Tres Leches", TortaTresLeches, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_tres_leches_01", "torta_tres_leches_02"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinGluten)));
+        this.genProduct("Torta Tres Leches", TortaTresLeches, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_tres_leches_01", "torta_tres_leches_02"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinGluten, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // sachertorte
-//        this.genProduct("Torta Sachertorte", TortaSachertorte, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("sachertorte_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta Sachertorte", TortaSachertorte, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("sachertorte_01"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta hojarasca manjar
-//        this.genProduct("Torta Hojarasca Manjar", TortaHojarascaManjar, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_hojarasca_manjar_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta Hojarasca Manjar", TortaHojarascaManjar, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_hojarasca_manjar_01"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta manjar chocolate
-//        this.genProduct("Torta de Manjar Chocolate", TortaManjarChocolate, false, new BigDecimal(21500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_manjar_01"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta de Manjar Chocolate", TortaManjarChocolate, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_manjar_01"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(21500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // torta matcha
-//        this.genProduct("Torta Matcha", TortaMatcha, false, new BigDecimal(22500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("torta_matcha_01", "torta_matcha_02", "torta_matcha_03"))), new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Torta Matcha", TortaMatcha, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("torta_matcha_01", "torta_matcha_02", "torta_matcha_03"))),
+                new HashSet<Category>(Arrays.asList(vanguard)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(22500), null, 16, true),
+                        this.genVariant(new BigDecimal(26500), null, 20, false),
+                        this.genVariant(new BigDecimal(35900), null, 30, false),
+                        this.genVariant(new BigDecimal(44900), null, 40, false),
+                        this.genVariant(new BigDecimal(55500), null, 50, false)
+                    )
+                )
+        );
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         // COCTEL
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // cupcakes tradicionales
-//        this.genProduct("Cupcakes Tradicionáles", CupcakesTradicionales, false, new BigDecimal(1500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("cupcake_tradicional_01", "cupcake_tradicional_02", "cupcake_tradicional_03"))),
-//                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Cupcakes Tradicionáles", CupcakesTradicionales, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("cupcake_tradicional_01", "cupcake_tradicional_02", "cupcake_tradicional_03"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(1500), 1, null, true)
+                    )
+                )
+        );
 
         // cupcakes con diseño
-//        this.genProduct("Cupcakes con Diseño", CupcakesDiseno, false, new BigDecimal(1800), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("cupcake_diseno_01", "cupcake_diseno_02", "cupcake_diseno_03", "cupcake_diseno_04", "cupcake_diseno_05", "cupcake_diseno_06"))),
-//                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Cupcakes con Diseño", CupcakesDiseno, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("cupcake_diseno_01", "cupcake_diseno_02", "cupcake_diseno_03", "cupcake_diseno_04", "cupcake_diseno_05", "cupcake_diseno_06"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(1800), 1, null, true)
+                    )
+                )
+        );
 
         // pasteles surtidos
-//        this.genProduct("Pastelitos Surtidos", PastelesSurtidos, false, new BigDecimal(35500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("pastelitos_surtidos_01", "pastelitos_surtidos_02", "pastelitos_surtidos_03", "pastelitos_surtidos_04"))),
-//                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Pastelitos Surtidos", PastelesSurtidos, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("pastelitos_surtidos_01", "pastelitos_surtidos_02", "pastelitos_surtidos_03", "pastelitos_surtidos_04"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(35500), 100, null, true)
+                    )
+                )
+        );
 
         // empanadas surtidas
-//        this.genProduct("Empanaditas Surtidas", EmpanaditasSurtidas, false, new BigDecimal(35500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("empanadas_01"))), new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Empanaditas Surtidas", EmpanaditasSurtidas, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("empanadas_01"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(35500), 100, null, true)
+                    )
+                )
+        );
 
         // canapes surtidos
-//        this.genProduct("Canapes Surtidos", CanapesSurtidos, false, new BigDecimal(34900), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("canapes_01", "canapes_02"))),
-//                new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Canapes Surtidos", CanapesSurtidos, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("canapes_01", "canapes_02"))),
+                new HashSet<Category>(Arrays.asList(coctel)), populares, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(34900), 100, null, true)
+                    )
+                )
+        );
 
         // tapaditos
-//        this.genProduct("Tapaditos", Tapaditos, false, new BigDecimal(34500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("tapaditos_01", "tapaditos_02"))), new HashSet<Category>(Arrays.asList(coctel)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Tapaditos", Tapaditos, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("tapaditos_01", "tapaditos_02"))),
+                new HashSet<Category>(Arrays.asList(coctel)), vendidos, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(34500), 100, null, true)
+                    )
+                )
+        );
 
         // tacitas de chocolate
-//        this.genProduct("Tacitas de Chocolate", TacitasdeChocolate, false, new BigDecimal(35500), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("tasitas_chocolate_01", "tasitas_chocolate_02"))), new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Tacitas de Chocolate", TacitasdeChocolate, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("tasitas_chocolate_01", "tasitas_chocolate_02"))),
+                new HashSet<Category>(Arrays.asList(coctel)), fechas, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(35500), 100, null, true)
+                    )
+                )
+        );
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         // DULCES
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // alfajores
-//        this.genProduct("Alfajores", AlfajoresdeManjaryChocolate, false, new BigDecimal(9800), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("alfajores_01", "alfajores_02"))), new HashSet<Category>(Arrays.asList(dulces)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinLactosa, conStevia)));
+        this.genProduct("Alfajores", AlfajoresdeManjaryChocolate, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("alfajores_01", "alfajores_02"))),
+                new HashSet<Category>(Arrays.asList(dulces)), vendidos, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche, sinGluten)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar, OptSinGluten)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(9800), 12, null, true)
+                    )
+                )
+        );
 
         // kuchen de frutas
-//        this.genProduct("Kuchen de Frutas", KuchenFrutas, false, new BigDecimal(17900), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("kuchen_arandano_01", "kuchen_manzana_01"))), new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Kuchen de Frutas", KuchenFrutas, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("kuchen_arandano_01", "kuchen_manzana_01"))),
+                new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(17900), null, 16, true)
+                    )
+                )
+        );
 
         // tartaletas de frutas
-//        this.genProduct("Tartaletas de Frutas de Temporada", TartaletaFrutas, false, new BigDecimal(17900), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("tartaleta_01", "tartaleta_02", "tartaleta_03", "tartaleta_04", "tartaleta_05", "tartaleta_06"))),
-//                new HashSet<Category>(Arrays.asList(dulces)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)));
+        this.genProduct("Tartaletas de Frutas de Temporada", TartaletaFrutas, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("tartaleta_01", "tartaleta_02", "tartaleta_03", "tartaleta_04", "tartaleta_05", "tartaleta_06"))),
+                new HashSet<Category>(Arrays.asList(dulces)), destacados, new HashSet<Tag>(Arrays.asList(sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinLeche, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(17900), null, 16, true)
+                    )
+                )
+        );
 
         // pie de limon
-//        this.genProduct("Pie de Limon", PieLimon, false, new BigDecimal(17900), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("pie_limon_01"))), new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)));
+        this.genProduct("Pie de Limon", PieLimon, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("pie_limon_01"))),
+                new HashSet<Category>(Arrays.asList(dulces)), populares, new HashSet<Tag>(Arrays.asList(sinLactosa, conStevia)),
+                new HashSet<Option>(Arrays.asList(OptSinLactosa, OptSinAzucar)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(17900), null, 16, true)
+                    )
+                )
+        );
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         // PANES
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // pan de molde semilla
-//        this.genProduct("Pan de Molde", PanMolde, false, new BigDecimal(3300), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("pan_molde_01", "pan_molde_02"))),
-//                new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Pan de Molde", PanMolde, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("pan_molde_01", "pan_molde_02"))),
+                new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinGluten, OptSinAzucar, OptSinLeche)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(3300), 1, null, true)
+                    )
+                )
+        );
 
         // linaza
-//        this.genProduct("Pan de Molde de Linaza", PanLinaza, false, new BigDecimal(3800), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("pan_linaza_01"))), new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
+        this.genProduct("Pan de Molde de Linaza", PanLinaza, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("pan_linaza_01"))),
+                new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinGluten, OptSinAzucar, OptSinLeche)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(3800), 1, null, true)
+                    )
+                )
+        );
 
         // almendra
-//        this.genProduct("Pan de Molde de Almendra", PanAlmendras, false, new BigDecimal(1800), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("pan_almendra_01"))), new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
-
+        this.genProduct("Pan de Molde de Almendra", PanAlmendras, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("pan_almendra_01"))),
+                new HashSet<Category>(Arrays.asList(pan)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinGluten, OptSinAzucar, OptSinLeche)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(1800), 1, null, true)
+                    )
+                )
+        );
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         // MASAS
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // empanadas
-//        this.genProduct("Empanadas", Empanadas, false, new BigDecimal(2300), this.searchImage(listImages,
-//                new ArrayList<>(Arrays.asList("empanadas_01", "empanadas_02", "empanadas_03"))),
-//                new HashSet<Category>(Arrays.asList(masas)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)));
-
-
-        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        this.genProduct("Empanadas", Empanadas, false, false, null,
+                this.searchImage(listImages, new ArrayList<>(Arrays.asList("empanadas_01", "empanadas_02", "empanadas_03"))),
+                new HashSet<Category>(Arrays.asList(masas)), vendidos, new HashSet<Tag>(Arrays.asList(sinGluten, sinAzucar, sinLeche)),
+                new HashSet<Option>(Arrays.asList(OptSinGluten, OptSinAzucar, OptSinLeche)),
+                new HashSet<Variant>(Arrays.asList(
+                        this.genVariant(new BigDecimal(2300), 1, null, true)
+                    )
+                )
+        );
 
     }
 
@@ -454,9 +693,9 @@ public class InitService {
                 collection, tags, null, variants, options));
     }
 
-    private Variant genVariant(BigDecimal basePrice, Integer unitQty, Integer clientsCap, boolean isDefault){
+    private Variant genVariant(BigDecimal basePrice, Integer unitQty, Integer clientsCap, boolean isSelected){
         return new Variant(null, null, basePrice, null, unitQty, clientsCap,
-                isDefault, false, null, null, null, null);
+                isSelected, null, null, null, null);
     }
 
 }

@@ -25,7 +25,6 @@ public class VariantMap {
             model.setTotalPriceAmount(entity.getTotalPriceAmount());
             model.setUnitQuantity(entity.getUnitQuantity());
             model.setClientsCapacity(entity.getClientsCapacity());
-            model.setDefault(entity.isDefault());
             model.setSelected(entity.isSelected());
             model.setCreated(dateFormat.dateToString(entity.getCreated()));
             model.setModified(dateFormat.dateToString(entity.getModified()));
@@ -47,7 +46,6 @@ public class VariantMap {
             entity.setUnitQuantity(model.getUnitQuantity());
             entity.setClientsCapacity(model.getClientsCapacity());
             entity.setSelected(model.isSelected());
-            entity.setDefault(model.isDefault());
             entity.setCreated(dateFormat.stringToDate(model.getCreated()));
             entity.setModified(dateFormat.stringToDate(model.getModified()));
             entity.setOptions(new HashSet<>(optionMap.toEntityList(model.getOptions())));

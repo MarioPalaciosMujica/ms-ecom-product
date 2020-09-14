@@ -59,14 +59,17 @@ public class ProductService {
     public boolean update(@NotNull Product entity){
         Product original = this.findById(entity.getIdProduct());
         if(original != null){
-//            for (Variant variant : entity.getVariants()){
-//                if(variant.getSku() != null && variant.getSku() <= 0){
-//                    variant.setSku(null);
-//                }
-//                variant.setBasePriceAmount(currencyCLP.roundClp(variant.getBasePriceAmount()));
-//                variant.setModified(new Date());
-//                variant.setProduct(entity);
-//            }
+            for (Variant variant : entity.getVariants()){
+                if(variant.getSku() != null && variant.getSku() <= 0){
+                    variant.setSku(null);
+                }
+                variant.setBasePriceAmount(currencyCLP.roundClp(variant.getBasePriceAmount()));
+                if(variant.getCreated() == null){
+                    variant.setCreated(new Date());
+                }
+                variant.setModified(new Date());
+                variant.setProduct(entity);
+            }
             entity.setCreated(original.getCreated());
             entity.setModified(new Date());
             this.isProductSale(entity);

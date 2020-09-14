@@ -29,9 +29,6 @@ public class VariantModel {
     @JsonProperty("clientsCapacity")
     private Integer clientsCapacity;
 
-    @JsonProperty("isDefault")
-    private boolean isDefault;
-
     @JsonProperty("isSelected")
     private boolean isSelected;
 
