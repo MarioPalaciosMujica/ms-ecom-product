@@ -44,8 +44,17 @@ public class Product {
     @Column(name = "discount_percentage")
     private BigDecimal discountPercentage;
 
+    @Column(name = "current_base_price", nullable = false)
+    private BigDecimal currentBasePrice;
+
+    @Column(name = "current_total_price", nullable = false)
+    private BigDecimal currentTotalPrice;
+
     @Column(name = "stock")
     private Integer stock;
+
+    @Column(name = "is_capacity_qty")
+    private boolean isCapacityQty;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -101,6 +110,7 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "id_option")
     )
     private Set<Option> options;
+
 
 
     public Long getIdProduct() {
@@ -167,12 +177,36 @@ public class Product {
         this.discountPercentage = discountPercentage;
     }
 
+    public BigDecimal getCurrentBasePrice() {
+        return currentBasePrice;
+    }
+
+    public void setCurrentBasePrice(BigDecimal currentBasePrice) {
+        this.currentBasePrice = currentBasePrice;
+    }
+
+    public BigDecimal getCurrentTotalPrice() {
+        return currentTotalPrice;
+    }
+
+    public void setCurrentTotalPrice(BigDecimal currentTotalPrice) {
+        this.currentTotalPrice = currentTotalPrice;
+    }
+
     public Integer getStock() {
         return stock;
     }
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public boolean isCapacityQty() {
+        return isCapacityQty;
+    }
+
+    public void setCapacityQty(boolean capacityQty) {
+        isCapacityQty = capacityQty;
     }
 
     public boolean isActive() {

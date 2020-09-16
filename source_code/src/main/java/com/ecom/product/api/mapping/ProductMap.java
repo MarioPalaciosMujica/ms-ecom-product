@@ -33,7 +33,10 @@ public class ProductMap {
             model.setNew(entity.isNew());
             model.setSale(entity.isSale());
             model.setDiscountPercentage(entity.getDiscountPercentage());
+            model.setCurrentBasePrice(entity.getCurrentBasePrice());
+            model.setCurrentTotalPrice(entity.getCurrentTotalPrice());
             model.setStock(entity.getStock());
+            model.setCapacityQty(entity.isCapacityQty());
             model.setActive(entity.isActive());
             model.setCreated(dateFormat.dateToString(entity.getCreated()));
             model.setModified(dateFormat.dateToString(entity.getModified()));
@@ -62,7 +65,10 @@ public class ProductMap {
             entity.setNew(model.isNew());
             entity.setSale(model.isSale());
             entity.setDiscountPercentage(model.getDiscountPercentage());
+            entity.setCurrentBasePrice(model.getCurrentBasePrice());
+            entity.setCurrentTotalPrice(model.getCurrentTotalPrice());
             entity.setStock(model.getStock());
+            entity.setCapacityQty(model.isCapacityQty());
             entity.setActive(model.isActive());
             entity.setCreated(dateFormat.stringToDate(model.getCreated()));
             entity.setModified(dateFormat.stringToDate(model.getModified()));

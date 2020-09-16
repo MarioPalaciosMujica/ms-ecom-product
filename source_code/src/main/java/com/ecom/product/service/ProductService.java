@@ -34,6 +34,12 @@ public class ProductService {
             variant.setCreated(new Date());
             variant.setProduct(entity);
         }
+        for (Variant variant : entity.getVariants()){
+            if(variant.isSelected()){
+                entity.setCurrentBasePrice(variant.getBasePriceAmount());
+                break;
+            }
+        }
         this.isProductSale(entity);
         entity.setNew(true);
         entity.setRating(0);
@@ -69,6 +75,12 @@ public class ProductService {
                 }
                 variant.setModified(new Date());
                 variant.setProduct(entity);
+            }
+            for (Variant variant : entity.getVariants()){
+                if(variant.isSelected()){
+                    entity.setCurrentBasePrice(variant.getBasePriceAmount());
+                    break;
+                }
             }
             entity.setCreated(original.getCreated());
             entity.setModified(new Date());
@@ -269,6 +281,7 @@ public class ProductService {
     private void isProductSale(Product product){
         if(product.getDiscountPercentage() != null && product.getDiscountPercentage().compareTo(new BigDecimal(0)) == 1){
             product.setSale(true);
+            product.setCurrentTotalPrice(currencyCLP.applyDiscount(product.getCurrentBasePrice(), product.getDiscountPercentage()));
             for (Variant variant : product.getVariants()){
                 variant.setTotalPriceAmount(currencyCLP.applyDiscount(variant.getBasePriceAmount(), product.getDiscountPercentage()));
             }
@@ -276,6 +289,7 @@ public class ProductService {
         else{
             product.setSale(false);
             product.setDiscountPercentage(null);
+            product.setCurrentTotalPrice(product.getCurrentBasePrice());
             for (Variant variant : product.getVariants()){
                 variant.setTotalPriceAmount(variant.getBasePriceAmount());
             }

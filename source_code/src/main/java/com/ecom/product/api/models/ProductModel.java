@@ -35,8 +35,17 @@ public class ProductModel {
     @JsonProperty("discountPercentage")
     private BigDecimal discountPercentage;
 
+    @JsonProperty("currentBasePrice")
+    private BigDecimal currentBasePrice;
+
+    @JsonProperty("currentTotalPrice")
+    private BigDecimal currentTotalPrice;
+
     @JsonProperty("stock")
     private Integer stock;
+
+    @JsonProperty("isCapacityQty")
+    private boolean isCapacityQty;
 
     @JsonProperty("isActive")
     private boolean isActive;
@@ -65,7 +74,7 @@ public class ProductModel {
     @JsonProperty("productMaterials")
     private List<ProductMaterialModel> productMaterials;
 
-    @JsonProperty("optionModels")
+    @JsonProperty("options")
     private List<OptionModel> options;
 
     @JsonProperty("variants")
